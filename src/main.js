@@ -38,7 +38,7 @@ const crearPlantilla = (data)=>{
         let card =`
         <div class="card-item grow">
         <h1>N° ${data[i].num}</h1>
-        <img class="img-res" src='${data[i].img}'>
+        <img src='${data[i].img}'>
         <p>${data[i].name}</p>
         </div>
         `;
