@@ -1,10 +1,18 @@
-/* Manejo de data */
-
-// esta es una función de ejemplo
-// puedes ver como agregamos la función a nuestro objeto global window
-
-const example = () => {
-  return 'example';
+const  mostrarListaPokemon = (data) => {
+  let lista = [];
+  for(let i = 0 ; i < data.length ; i++){
+    lista.push({num : data[i].num , img : data[i].img , name : data[i].name})
+  }
+      return lista;
 };
 
-window.example = example;
+const filtrarTipoPokemon = (data)=>{
+  data.filter()
+};
+
+
+
+
+window.pokemon = {
+  mostrarListaPokemon: mostrarListaPokemon,
+}

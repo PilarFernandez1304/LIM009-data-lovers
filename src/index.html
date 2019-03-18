@@ -1,17 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximun-scale=1">
     <title>Data Lovers</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">   
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <!-- <script src="./data/injuries/injuries.js"></script> -->
-    <!-- <script src="./data/pokemon/pokemon.js"></script> -->
-    <!-- <script src="./data/steam/steam.js"></script> -->
-    <!-- <script src="./data/worldbank/worldbank.js"></script> -->
-    <!-- <script src="./data/lol/lol.js"></script> -->
+    <!--Section header -->
+    <header>
+      <div class="container-header">
+        <div class="row">
+          <div class="coum-xs-12 nav">
+            <img class="img-responsive" src="img/logomin.png" alt="logo" >
+            <input type="checkbox" id="toggle"/>
+            <label for="toggle"><i class="fas fa-bars"></i></label>
+            
+            <nav class="navbar" > 
+              <ul class="main-nav" id="main">
+                <li><a href="#index"    class="nav-links" id="home"> Inicio </a></li>
+                <li><a href="#Pokedex"  class="nav-links" id="pokedex"> Pokedex </a></li>
+                <li><a href="#Noticias" class="nav-links" id="evolution"> Evolución </a></li> 
+                <li><a href="#Noticias" class="nav-links" id="news"> Noticias </a></li>    
+              </ul>
+            </nav>                         
+          </div>
+        </div>
+      </div>
+    </header>  
+    <!--Section home -->
+    <section id="page-home">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>page home</p>           
+        </div>
+      </div>
+    </section> 
+
+    <!--Section Pokedex -->
+    <section id="page-pokedex">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>Conoce a los 151 Pokemon de la regio Kanto</h1>
+           <div  class="list-pokemon" id="list-pokemon"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Section Evolucion -->
+    <section id="page-evolution">
+      <div class="row">
+        <div class="col-xs-12">
+            <p>page evolution</p>  
+        </div>
+      </div>
+    </section>
+
+    <!--Section Noticias -->
+    <section id="page-news">
+      <div class="row">
+        <div class="col-xs-12">
+            <p>page news</p>  
+        </div>
+      </div>
+    </section>
+ 
+    <script src="./data/pokemon/pokemon.js"></script>   
     <script src="data.js"></script>
     <script src="main.js"></script>
   </body>

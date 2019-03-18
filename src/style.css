@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Margarine');
+@import url(main.css);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;  
+    font-family: 'Margarine', cursive;
+ }
+ .img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+.container {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 1rem;
+}
+
+ .row:before, .row:after {
+    content: " ";
+    display: table;
+}
+.row:after {
+    clear: both;
+} 
+
+section{
+    margin-top:100px;
+}
+/* ocultar paginas */
+
+#page-pokedex , #page-evolution , #page-news {
+    display: none;
+}
+
+
+/***** estilos para cada pokemon ***/
+.list-pokemon{
+    margin: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;    
+}
+.card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+
+    border-radius: 25px;
+    background: rgba(183,222,237,1);
+    font-family: 'Margarine', cursive;
+    border:1px solid #2B4D86;
+    color:#2B4D86;
+}
+
+.card-item img{
+    width: 150px;
+    height: 150px;
+}
+
+
+.card-item h1{
+    color: #E3A90B;
+}
+
+h1{
+    color: crimson;
+}
+
+
+.grow:hover
+{
+-webkit-transform: scale(1.1);
+-ms-transform: scale(1.1);
+transform: scale(1.1);
+}
+
