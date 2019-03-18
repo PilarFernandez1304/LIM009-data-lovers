@@ -31,24 +31,26 @@ main.addEventListener("click",(e)=>{
 });
 
 /*2. MOSTRAR POKEMON */
+
 const data = POKEMON.pokemon;
+const dataPokedex = pokemon.mostrarListaPokemon(data)
+
 const crearPlantilla = (data)=>{
     let listaMostrada = [];
-    for(let i = 0 ; i < data.length ; i++){
+    data.forEach((data)=>{
         let card =`
         <div class="card-item grow">
-        <h1>N° ${data[i].num}</h1>
-        <img src='${data[i].img}'>
-        <p>${data[i].name}</p>
+        <h1>N° ${data.num}</h1>
+        <img class="img-res" src='${data.img}'>
+        <p>${data.name}</p>
         </div>
         `;
-        listaMostrada +=card;
-      }
-      return listaMostrada;
-};
-    
- 
 
+        listaMostrada +=card;
+    });
+    return listaMostrada;
+};
+ 
 
 
 
