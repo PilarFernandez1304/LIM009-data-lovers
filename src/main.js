@@ -16,7 +16,7 @@ main.addEventListener("click",(e)=>{
 
     if(e.target.id==="pokedex"){
         pagePokedex.style.display='block';
-        document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
+       // document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
     }
     else if(e.target.id==="evolution"){
         pageEvolution.style.display='block';
@@ -32,8 +32,8 @@ main.addEventListener("click",(e)=>{
 
 /*2. MOSTRAR POKEMON */
 
-const data = POKEMON.pokemon;
-const dataPokedex = pokemon.mostrarListaPokemon(data)
+/*const data = POKEMON.pokemon;
+const dataPokedex = pokemon.mostrarListaPokemon(data) */
 
 const crearPlantilla = (data)=>{
     let listaMostrada = [];
@@ -45,7 +45,6 @@ const crearPlantilla = (data)=>{
         <p>${data.name}</p>
         </div>
         `;
-
         listaMostrada +=card;
     });
     return listaMostrada;
