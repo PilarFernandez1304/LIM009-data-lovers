@@ -32,10 +32,10 @@ main.addEventListener("click",(e)=>{
 
 /*2. MOSTRAR POKEMON */
 
-/*const data = POKEMON.pokemon;
-const dataPokedex = pokemon.mostrarListaPokemon(data) */
+const data = POKEMON.pokemon;
+const dataPokedex = pokemon.mostrarListaPokemon(data) 
 
-const crearPlantilla = (data)=>{
+const crearPlantilla = (data) => {
     let listaMostrada = [];
     data.forEach((data)=>{
         let card =`
@@ -49,7 +49,22 @@ const crearPlantilla = (data)=>{
     });
     return listaMostrada;
 };
- 
 
+const orderPokemon = document.getElementById('order-pokemon');
+orderPokemon.addEventListener('change',()=>{
+    const selectOrder = orderPokemon.value;
+    let sortOrder;
+    switch(selectOrder){
+        case 'az':
+        sortOrder ='ascendente';
+        break;
+        case 'za':
+        sortOrder = 'descendente';
+        break;
+    }
+
+    const pokedexOrdenado = pokemon.sortData(dataPokedex,sortOrder);
+    console.log(pokedexOrdenado)
+});
 
 

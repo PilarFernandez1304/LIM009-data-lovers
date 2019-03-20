@@ -15,51 +15,22 @@ const mostrarListaPokemon = (data) => {
 const sortData = (data,sortOrder) =>{
     switch(sortOrder){
       case 'ascendente':
-        listaOrdenada = data.sort((a,b)=>{
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (a.name < b.name) {
-            return -1;
-          }
-          return 0;
-        });    
+        listaOrdenada = data.sort((a,b)=> a.name > b.name ? 1:-1);    
       break;
       case 'descendente':
-        listaOrdenada = data.sort((a,b)=>{
-          if (b.name > a.name) {
-            return 1;
-          }
-          if (b.name < a.name) {
-            return -1;
-          }
-          return 0;
-        });
+        listaOrdenada = data.sort((a,b)=>b.name > a.name ? 1:-1);
       break;
     }
-
     return listaOrdenada;
 }
-
+/*
 const data = POKEMON.pokemon;
 const dataPokedex = mostrarListaPokemon(data);
 
-console.log(sortData(dataPokedex,'ascendente'));
+console.log(sortData(dataPokedex,'descendente'));
 
-
+*/
 window.pokemon = {
   mostrarListaPokemon: mostrarListaPokemon,
   sortData : sortData
 }
-
-/* const ordenarAZ = namepokedex.sort(function (a, b) {
-    if (a.name > b.name) {
-      return 1;
-    }
-    if (a.name < b.name) {
-      return -1;
-    }
-    // a must be equal to b
-    return 0;
-  });
-*/
