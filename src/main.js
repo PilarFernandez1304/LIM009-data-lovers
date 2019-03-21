@@ -1,6 +1,5 @@
 /* Manejo del DOM */
-
-/* 1. MENU*/
+// 1. MENU 
 const main = document.getElementById("main");
 const pageHome = document.getElementById("page-home");
 const pagePokedex = document.getElementById("page-pokedex");
@@ -30,10 +29,12 @@ main.addEventListener("click",(e)=>{
     }
 });
 
-/*2. MOSTRAR POKEMON */
+/*2.FUNCIONES */
 
-const data = POKEMON.pokemon;
-const dataPokedex = pokemon.mostrarListaPokemon(data) 
+//const data = POKEMON.pokemon;
+//const dataPokedex = pokemon.mostrarListaPokemon(data); 
+
+// MOSTRAR POKEMON 
 
 const crearPlantilla = (data) => {
     let listaMostrada = [];
@@ -49,12 +50,15 @@ const crearPlantilla = (data) => {
     });
     return listaMostrada;
 };
-
+// ORDENAR POKEMON
 const orderPokemon = document.getElementById('order-pokemon');
 orderPokemon.addEventListener('change',()=>{
     const selectOrder = orderPokemon.value;
     let sortOrder;
     switch(selectOrder){
+        case 'avg_spawns':
+        sortOrder = 'ascendente';
+        break;
         case 'az':
         sortOrder ='ascendente';
         break;
@@ -62,9 +66,17 @@ orderPokemon.addEventListener('change',()=>{
         sortOrder = 'descendente';
         break;
     }
-
-    const pokedexOrdenado = pokemon.sortData(dataPokedex,sortOrder);
-    console.log(pokedexOrdenado)
+    //const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
+    //document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
 });
 
+// FILTRAR POKEMON
+
+const filterPokemon = document.getElementById('filter-pokemon');
+filterPokemon.addEventListener('change',()=>{
+    condition = filterPokemon.value;
+    const pokedexFiltrado = pokemon.filterData(data,condition);
+   // console.log(pokedexFiltrado);
+    //document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+});
 
