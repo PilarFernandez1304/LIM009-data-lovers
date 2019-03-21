@@ -15,7 +15,7 @@ main.addEventListener("click",(e)=>{
 
     if(e.target.id==="pokedex"){
         pagePokedex.style.display='block';
-       // document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
+        //document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
     }
     else if(e.target.id==="evolution"){
         pageEvolution.style.display='block';
@@ -35,7 +35,6 @@ main.addEventListener("click",(e)=>{
 //const dataPokedex = pokemon.mostrarListaPokemon(data); 
 
 // MOSTRAR POKEMON 
-
 const crearPlantilla = (data) => {
     let listaMostrada = [];
     data.forEach((data)=>{
@@ -50,6 +49,7 @@ const crearPlantilla = (data) => {
     });
     return listaMostrada;
 };
+
 // ORDENAR POKEMON
 const orderPokemon = document.getElementById('order-pokemon');
 orderPokemon.addEventListener('change',()=>{
@@ -72,11 +72,13 @@ orderPokemon.addEventListener('change',()=>{
 
 // FILTRAR POKEMON
 
+/* aqui ira lo de dibujar*/
+
 const filterPokemon = document.getElementById('filter-pokemon');
 filterPokemon.addEventListener('change',()=>{
     condition = filterPokemon.value;
-    const pokedexFiltrado = pokemon.filterData(data,condition);
+   // const pokedexFiltrado = pokemon.filterData(data,condition);
    // console.log(pokedexFiltrado);
-    //document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+   // document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
 });
 

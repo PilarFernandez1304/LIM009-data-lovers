@@ -5,12 +5,16 @@
   return lista;
 };*/
 
+// pruebas 
+//const data = POKEMON.pokemon;
+
 const mostrarListaPokemon = (dataPoke) => {
   pokedex = dataPoke.map(data =>{
     return{num : data.num , img : data.img , name : data.name , avg_spawns : data.avg_spawns};
   });
   return pokedex;
 }
+//const dataPokedex = mostrarListaPokemon(data);
 
 const sortData = (data,sortBy,sortOrder) =>{
     switch(sortOrder){
@@ -28,11 +32,8 @@ const sortData = (data,sortBy,sortOrder) =>{
     }
     return listaOrdenada;
 }
-
-// pruebas 
-const data = POKEMON.pokemon;
-//const dataPokedex = mostrarListaPokemon(data);
 //console.log(sortData(dataPokedex,'az','ascendente'));
+
 
 const filterData = (data,condition) =>{
   listaFiltrada = data.filter((element)=>{
@@ -47,26 +48,24 @@ const filterData = (data,condition) =>{
 //console.log(filterData(data,'Fire'));
 
 
-const tipos = (data) =>{
-  let arrTipos = [];
-  for(let i = 0 ; i < data.length ; i++){
-    //arrTipos.push(data[i].type);    
-    arrTipos.push(Object.values(data[i].type));  
-  }
-  return arrTipos ;  
+const listType = (data) =>{
+ let arrTipos =[];
+ let tipo =[];
+ data.forEach(element => {
+   for(let i = 0 ; i < element.type.length ; i++){
+     arrTipos.push(element.type[i]);
+   }  
+   tipo = [...new Set(arrTipos)]
+   });
+   return tipo;
 }
-console.log(tipos(data));
-
-//console.log(Object.values(data[0].type))
-
-
-
-
+//console.log(tipos(data));
 
 
 window.pokemon = {
   mostrarListaPokemon: mostrarListaPokemon,
   sortData : sortData,
-  filterData :filterData
+  filterData :filterData,
+  listType :listType
 
 }
