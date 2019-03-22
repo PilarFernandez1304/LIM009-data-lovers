@@ -71,10 +71,11 @@ orderPokemon.addEventListener('change',()=>{
 
 
 // FILTRAR POKEMON
-
+const FilterSelect= document.getElementById('FilterSelect')
+FilterSelect.addEventListener('change',SelectFilter);
 let array; 
 function SelectFilter(){
- const a = document.getElementById('FilterSelect').value;
+ const a = FilterSelect.value;
     if(a==='1'){
           array=["Grass","Poison","Fire","Flying","Water",
           "Bug","Normal","Electric","Ground","Fighting",
