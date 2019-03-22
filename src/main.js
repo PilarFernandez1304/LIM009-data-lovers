@@ -69,9 +69,56 @@ orderPokemon.addEventListener('change',()=>{
     document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
 });
 
+
 // FILTRAR POKEMON
 
+let array; 
+function SelectFilter(){
+ const a = document.getElementById('FilterSelect').value;
+    if(a==='1'){
+          array=["Grass","Poison","Fire","Flying","Water",
+          "Bug","Normal","Electric","Ground","Fighting",
+          "Psychic","Rock","Ice","Ghost","Dragon"];
+
+    }else if(a ==="2"){
+         array=['1ª Evolucion','2ª Evolucion','3ª Evolucion'];
+    }else{
+        
+         array=[];
+    }
+   let string='';
+   
+    for (let i = 0; i<array.length; i++) {
+      let eleccion=array[i];   
+     string =string+ '<option value="'+eleccion+'">'+eleccion+'</option>';        
+    }
+    
+    string='<select id="filterType">'+string+'</select>';
+    document.getElementById('FilterType').innerHTML=string
+
+    const filterType=document.getElementById('filterType');
+    filterType.addEventListener('change',()=>{
+     condition=filterType.value;
+     const pokedexFiltrado=pokemon.filterData(data,condition);
+  // console.log(pokedexFiltrado);
+     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+     
+     }
+     
+)};
+
+
+
+// const filterPokemon = document.getElementById('filter-pokemon');
+// filterPokemon.addEventListener('change',()=>{
+//     condition = filterPokemon.value;
+//     const pokedexFiltrado = pokemon.filterData(data,condition);
+//    // console.log(pokedexFiltrado);
+//     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+// });
+
 //aqui ira lo de dibujar
+ /*
 const filterPokemon = document.getElementById('filter-pokemon');
 const generarTipo = (listTipos)=>{
     let types =[`<option disabled selected>Filtrar por:</option>`];
@@ -87,5 +134,6 @@ filterPokemon.addEventListener('change',()=>{
     condition = filterPokemon.value;
     const pokedexFiltrado = pokemon.filterData(data,condition);
     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-});
+}); */
+
 
