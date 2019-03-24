@@ -15,7 +15,7 @@ main.addEventListener("click",(e)=>{
 
     if(e.target.id==="pokedex"){
         pagePokedex.style.display='block';
-        document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
+       // document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
     }
     else if(e.target.id==="evolution"){
         pageEvolution.style.display='block';        
@@ -29,9 +29,9 @@ main.addEventListener("click",(e)=>{
 });
 
 /*2.FUNCIONES */
-
+/*
 const data = POKEMON.pokemon;
-const dataPokedex = pokemon.mostrarListaPokemon(data); 
+const dataPokedex = pokemon.mostrarListaPokemon(data); */
 
 // MOSTRAR POKEMON 
 const crearPlantilla = (data) => {
@@ -65,10 +65,9 @@ orderPokemon.addEventListener('change',()=>{
         sortOrder = 'descendente';
         break;
     }
-    const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
-    document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
+   // const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
+   // document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
 });
-
 
 // FILTRAR POKEMON
 
@@ -99,15 +98,13 @@ function SelectFilter(){
     const filterType=document.getElementById('filterType');
     filterType.addEventListener('change',()=>{
      condition=filterType.value;
-     const pokedexFiltrado=pokemon.filterData(data,condition);
+    // const pokedexFiltrado=pokemon.filterData(data,condition);
   // console.log(pokedexFiltrado);
-     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+    // document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
      
      }
      
 )};
-
-
 
 // const filterPokemon = document.getElementById('filter-pokemon');
 // filterPokemon.addEventListener('change',()=>{

@@ -6,7 +6,8 @@
 };*/
 
 // pruebas 
-//const data = POKEMON.pokemon;
+const data = POKEMON.pokemon;
+
 
 const mostrarListaPokemon = (dataPoke) => {
   pokedex = dataPoke.map(data =>{
@@ -14,7 +15,7 @@ const mostrarListaPokemon = (dataPoke) => {
   });
   return pokedex;
 }
-//const dataPokedex = mostrarListaPokemon(data);
+const dataPokedex = mostrarListaPokemon(data);
 
 const sortData = (data,sortBy,sortOrder) =>{
     switch(sortOrder){
@@ -47,7 +48,6 @@ const filterData = (data,condition) =>{
 }
 //console.log(filterData(data,'Fire'));
 
-
 const listType = (data) =>{
  let arrTipos =[];
  let tipo =[];
@@ -61,11 +61,50 @@ const listType = (data) =>{
 }
 //console.log(tipos(data));
 
+const computeStats = (dataPoke) =>{
+  /* Calculando cuantas evolcuiones tiene cada pokemon*/
+  calcularLista =[] 
+    for(let i = 0 ; i < dataPoke.length ; i++  ){
+      propiedad = dataPoke[i].hasOwnProperty('next_evolution');
+      if(propiedad === true ) {
+         propiedad = dataPoke[i].next_evolution.length;
+      } 
+      else{
+        propiedad = 0;
+      }      
+      calcularLista.push( {
+         num : dataPoke[i].num , 
+         img : dataPoke[i].img ,
+         name : dataPoke[i].name , 
+         candy_count : dataPoke[i].candy_count ,
+         next_evolution : dataPoke[i].next_evolution,
+         num_evoluciones : propiedad})
+    }
+
+    return calcularLista;   
+  }
+  console.log(computeStats(data));
+
+
+/*
+ pokeEncontrado = listaCalcular.find(poke=>poke.name===pokemon); 
+ evolution=pokeEncontrado.next_evolution;
+ pokeEvolution = listaCalcular.find(poke=>poke.name===evolution[0].name)
+ calculoEvolution = pokeEncontrado.candy_count - parseInt(dulce)
+
+ return { pokeEvolution , calculoEvolution};
+}*/
+
+
+
+
+
+
 
 window.pokemon = {
   mostrarListaPokemon: mostrarListaPokemon,
   sortData : sortData,
-  filterData :filterData,
-  listType :listType
-
+  filterData : filterData,
+  listType : listType,
+  computeStats :computeStats
 }
