@@ -50,7 +50,7 @@ const filterData = (data,condition) =>{
   return listaFiltrada;
 }
 //console.log(filterData(data,'Fire'));
-function NivelEvolucion(){
+// 
 let evolucion1=[];
 let evolucion2=[];
 let evolucion3=[];
@@ -71,7 +71,7 @@ for (let i=0 ; i<POKEMON.pokemon.length ; i++){
     }
   }
 }
-}
+console.log(evolucion1)
 
 const listType = (data) =>{
  let arrTipos =[];
