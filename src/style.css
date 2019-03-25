@@ -11,28 +11,115 @@
     height: auto;
 }
 .container {
-    width: 100%;
+    width: 90%;
     margin: auto;
     text-align: center;
     padding: 1rem;
 }
-
- .row:before, .row:after {
+.row:before, .row:after {
     content: " ";
     display: table;
 }
 .row:after {
     clear: both;
 } 
-
 section{
     margin-top:100px;
 }
 /* ocultar paginas */
-
 #page-pokedex , #page-evolution , #page-news {
     display: none;
 }
+
+/* ------------------ ESTILOS GENERALES - PAGE EVOLUTION ------------- */
+.style-content{
+    padding: 1rem;
+    margin: 1rem;
+}
+.evolution , .instructions {   
+    border : 1px solid #2B4D86
+}
+.calculate-evolution ,.evolution-result{
+    background: #4CAF50;
+}
+
+/****** Instruciones *****/
+.instructions .list-instructions {
+    text-align: justify;
+    padding :1rem 4rem;
+}
+
+/****** Formulario *****/
+form{
+    border-radius: 4px;	
+    background: #E3A90B;
+}
+.form-group{
+    padding: 1rem;
+}
+input{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+button{
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; 
+  font-family: 'Concert One', cursive; 
+}
+
+
+/******* Mobile First ******/
+.col-xs-12 { 
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /***** estilos para cada pokemon ***/

@@ -61,7 +61,7 @@ header label{
     .img-responsive{
        margin-left: 80px;
     }
-	label{
+	.container-header label{
 		display: none
 	}
 	.navbar {
