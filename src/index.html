@@ -12,7 +12,7 @@
     <header>
       <div class="container-header">
         <div class="row">
-          <div class="coum-xs-12 nav">
+          <div class="col-xs-12 nav">
             <img class="img-responsive" src="img/logomin.png" alt="logo" >
             <input type="checkbox" id="toggle"/>
             <label for="toggle"><i class="fas fa-bars"></i></label>
@@ -65,9 +65,6 @@
             </select>
             <div id="Filter"> 
             </div>
-        
-
-
            <div  class="list-pokemon" id="list-pokemon"></div>
           </div>
         </div>
@@ -76,9 +73,44 @@
 
     <!--Section Evolucion -->
     <section id="page-evolution">
-      <div class="row">
-        <div class="col-xs-12">
-            <p>page evolution</p>  
+      <div class="container ">
+        <div class="row">
+          <!--Section de Instrucciones -->
+          <aside class="col-xs-12 instructions style-content" id="instructions">
+            <h1>Instrucciones para calcular Evolucion</h1>
+            <div class="list-instructions">
+              <ol>
+                <li>Ingresa el nombre del pokemon en la primera casilla. </li>
+                <li>Ingresa cuantos caramelos tienes hasta el momento.</li>
+                <li>Haga click en "Descubrir"</li>
+                <li>Presione el boton de "Otra Vez" para hacer un nuevo calculo</li>
+              </ol>          
+            </div>
+          </aside>
+          <!--Section Calcular Evolucion -->
+          <div class="col-xs-12  style-content evolution">
+            <!--Section Formalario-->
+            <article  class="calculate-evolution style-content" id="calculate-evolution">
+              <h1>Descubre cuanto le falta a tu pokemon para evolcionar</h1> 
+              <form class="style-content" >
+                <div class="form-group">
+                  <label for="name-pokemon">Nombre de tu pokemon :</label>
+                  <input class="form-control" id="name-pokemon" type="text" placeholder="Nombre pokemon" required="required" />
+                </div>
+                <div class="form-group">
+                  <label for="candy_count">Numero de caramelos :</label>
+                  <input class="form-control" id="candy_count" type="number" placeholder="Nombre pokemon" required="required" />
+                </div>
+                <div class="form-group">
+                  <button id="btn-calculate" class="btn">Descubrir</button>
+                </div>                  
+              </form>
+            </article>
+            <!--Section Resulatdo-->          
+            <article  class="evolution-result style-content"  id="evolution-result"> 
+              hola
+            </article>             
+          </div>
         </div>
       </div>
     </section>

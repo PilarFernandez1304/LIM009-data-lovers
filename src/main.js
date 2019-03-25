@@ -15,7 +15,7 @@ main.addEventListener("click",(e)=>{
 
     if(e.target.id==="pokedex"){
         pagePokedex.style.display='block';
-        document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
+        //document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
     }
     else if(e.target.id==="evolution"){
         pageEvolution.style.display='block';        
@@ -65,10 +65,9 @@ orderPokemon.addEventListener('change',()=>{
         sortOrder = 'descendente';
         break;
     }
-    const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
-    document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
+   // const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
+   // document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
 });
-
 
 // FILTRAR POKEMON
 const FilterSelect= document.getElementById('FilterSelect')
@@ -95,34 +94,84 @@ function SelectFilter(){
      string =string+ '<option value="'+eleccion+'">'+eleccion+'</option>';        
     }
     
+
     string='<select id="filter">'+string+'</select>';
     console.log(document.getElementById('Filter').innerHTML=string)
     
-    const filter=document.getElementById("filter'+eleccion+'");
-    
-    switch(filter){
-        case '':
+    const filter=document.getElementById("filter");
+   
     filter.addEventListener('change',()=>{    
      condition=filter.value;
      const pokedexFiltrado=pokemon.filterData(data,condition);
   // console.log(pokedexFiltrado);
      document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-     });break;
+     })
     
-    };
-}
+   
+
+    string='<select id="filterType">'+string+'</select>';
+    document.getElementById('FilterType').innerHTML=string
+
+    const filterType=document.getElementById('filterType');
+    filterType.addEventListener('change',()=>{
+     condition=filterType.value;
+    // const pokedexFiltrado=pokemon.filterData(data,condition);
+    // console.log(pokedexFiltrado);
+    // document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+    }
+)};
+
+// CALCULAR DATOS DE EVOLUCION 
+
+const btnCalculate = document.getElementById('btn-calculate');
+btnCalculate.addEventListener('click',()=>{
+    const namePokemon = document.getElementById('name-pokemon').value;
+    const candyCount = document.getElementById('candy_count').value;
+
+    const calculateEvolution = document.getElementById('calculate-evolution'); 
+    const evolutionResult = document.getElementById('evolution-result'); 
+
+    const resultado = pokemon.computeStats(data,namePokemon,candyCount);
+    console.log(resultado);
+
+    const plantillaResultado = (data)=>{
+        for(let i = 0; i< data.length ;i++){
+            respuesta =`
+                <p>${data[i].evolution}</>
+                <p>${data[i].candy_evolution}</>
+            `;
+        }
+        return respuesta;
+    }
+    calculateEvolution.style.display = 'none';
+    evolutionResult.style.display = 'block';
+    evolutionResult.innerHTML= plantillaResultado(resultado);
+  
+    
+
+});
 
 
-// const filterPokemon = document.getElementById('filter-pokemon');
-// filterPokemon.addEventListener('change',()=>{
-//     condition = filterPokemon.value;
-//     const pokedexFiltrado = pokemon.filterData(data,condition);
+
+
+
+
+
+
+
+
+
+/*
+const filterPokemon = document.getElementById('filter-pokemon');
+filterPokemon.addEventListener('change',()=>{
+    condition = filterPokemon.value;
+     const pokedexFiltrado = pokemon.filterData(data,condition);
 //    // console.log(pokedexFiltrado);
-//     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-// });
+     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+ });
 
 //aqui ira lo de dibujar
- /*
+ 
 const filterPokemon = document.getElementById('filter-pokemon');
 const generarTipo = (listTipos)=>{
     let types =[`<option disabled selected>Filtrar por:</option>`];
