@@ -23,7 +23,7 @@ const POKEMON = {
       "Flying",
       "Psychic"
     ],
-    "next_evolution": [{
+    "next_evolution":[{
       "num": "002",
       "name": "Ivysaur"
     }, {

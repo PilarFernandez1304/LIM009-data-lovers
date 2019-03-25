@@ -50,6 +50,28 @@ const filterData = (data,condition) =>{
   return listaFiltrada;
 }
 //console.log(filterData(data,'Fire'));
+// 
+let evolucion1=[];
+let evolucion2=[];
+let evolucion3=[];
+for (let i=0 ; i<POKEMON.pokemon.length ; i++){
+  let element=POKEMON.pokemon[i];
+  if(element.prev_evolution === undefined)
+  {
+    evolucion1.push(element);
+    
+  
+  }else{ 
+    let cantidadPrev=element.prev_evolution.length
+    switch(cantidadPrev){
+      case 1:
+      evolucion2.push(element);break;
+      case 2:
+      evolucion3.push(element);break;
+    }
+  }
+}
+console.log(evolucion1)
 
 const listType = (data) =>{
  let arrTipos =[];
