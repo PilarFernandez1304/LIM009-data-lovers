@@ -68,7 +68,7 @@ const listType = (data) =>{
 /***** CALCULAR POKEMON ******/
 
 const dataListPokemon = (dataPoke) =>{
-  calcularLista =[] 
+  dataCalculate =[] 
   for(let i = 0 ; i < dataPoke.length ; i++  ){
     propiedad = dataPoke[i].hasOwnProperty('next_evolution');
     if(propiedad === true ) {
@@ -77,69 +77,77 @@ const dataListPokemon = (dataPoke) =>{
     else{
       propiedad = 0;
     }      
-    calcularLista.push( {
+    dataCalculate.push( {
        num : dataPoke[i].num , 
        name : dataPoke[i].name , 
        candy_count : dataPoke[i].candy_count ,
        next_evolution : dataPoke[i].next_evolution,
-       prev_evolution : dataPoke[i].prev_evolution,
-       num_evoluciones : propiedad,
+       num_evolutions : propiedad,
        img : dataPoke[i].img })
     }
-    return calcularLista;
+    return dataCalculate;
 }
 //console.log(dataListPokemon(data));
 
 const computeStats = (dataPoke,pokemon,dulce) =>{
+  dataCalculatePokemon = dataListPokemon(dataPoke);
+  //buscando al pokemon 
+  pokemonFind = dataCalculatePokemon.find(poke=>poke.name === pokemon);
+  numberEvolutions = pokemonFind.num_evolutions;          // saber el numero de evoluciones 
+  let arrResult = [];                                     // almacenar los datos de resultados 
+  let pokemonEvolution ;                                  // Evolucion de Pokemon
+  let calculoEvolution;                                   // Hallar dulces que falta 
 
-      calcularLista = dataListPokemon(dataPoke);
-      encontrado = calcularLista.find(poke=>poke.name === pokemon);
-      numeroEvoluciones = encontrado.num_evoluciones;
-      let arrResult = [];
-      let evolucion;
-      let anterior;
-      let calculoEvolution;
-
-      switch (numeroEvoluciones){  
-        // No ha evolucionado aun
-        case 2:
-        if(dulce < encontrado.candy_count){
-          evolucion = calcularLista.find( poke => poke.name === encontrado.next_evolution[0].name );
-          evolucion = evolucion.name;
-          calculoEvolution = encontrado.candy_count - parseInt(dulce);
-        }
-        else{
-          alert('no');
-          evolucion = 'Este pokemon ya evoluciono ';
-          calculoEvolution = 0;
-        }
-        break; 
-        // ya tiene la primera evolucion 
-        case 1:  
-        anterior = calcularLista.find( poke => poke.name === encontrado.prev_evolution[0].name );
-        anterior = anterior.candy_count;
-        
-        if( dulce > anterior  && dulce < encontrado.candy_count ){
-          evolucion = calcularLista.find( poke => poke.name === encontrado.next_evolution[0].name );
-          evolucion = evolucion.name;
-          calculoEvolution = encontrado.candy_count - parseInt(dulce);
-        }
-        else{
-          alert('no');
-          evolucion = 'Este pokemon ya evoluciono';
-          calculoEvolution = 0;
-        }          
-        break;
-        // ya termino de evolucionar
-        case 0:
-        evolucion = 'Este pokemon ya tuvo todas su evoluciones ';
-        calculoEvolution = 0;
-        break;
+  switch (numberEvolutions){  
+    case 2: // No ha tenido NINGUNA evolucion
+    case 1:  // Ya ha tenido 1 EVOLUCION              
+      if( dulce < pokemonFind.candy_count ){
+        pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );
+        calculoEvolution = pokemonFind.candy_count - parseInt(dulce);
       }
-      arrResult.push({evolution : evolucion , candy_evolution : calculoEvolution })
-      return arrResult;
+      else{
+        pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );        
+        calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(dulce));
+      }          
+    break;
+    case 0:  //Tiene todas la evoluciones 
+      pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.name )
+      calculoEvolution = 0;
+    break;
+    }
+/*
+    arrResult.pokemonCurrent = pokemonFind.name, 
+    arrResult.pokemonCurrentImg = pokemonFind.img,
+    arrResult. pokemonCurrentCandy = dulce,
+    arrResult. pokemonEvolution = pokemonEvolution.name, 
+    arrResult. pokemonEvolutionImg = pokemonEvolution.img,
+    arrResult. candy_evolution = calculoEvolution;
+    */   
+    arrResult.push({
+      pokemonCurrent : pokemonFind.name, 
+      pokemonCurrentImg : pokemonFind.img,
+      pokemonCurrentCandy : dulce,
+      pokemonEvolution :pokemonEvolution.name, 
+      pokemonEvolutionImg :pokemonEvolution.img,
+      candy_evolution : calculoEvolution})
+  
+      /*
+
+    arrResult.push(
+      pokemonFind.name, 
+      pokemonFind.img,
+      dulce,
+      pokemonEvolution.name, 
+      pokemonEvolution.img,
+      calculoEvolution
+    ); */
+
+    return arrResult;      
   }
- //console.log(computeStats(data ,"Ivysaur",25 ));
+
+/*  const hola =computeStats(data ,"Venusaur",101 );
+
+ console.log(hola); */
 
 
   

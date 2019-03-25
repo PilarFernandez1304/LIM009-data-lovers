@@ -107,33 +107,49 @@ function SelectFilter(){
 
 // CALCULAR DATOS DE EVOLUCION 
 
+
+
 const btnCalculate = document.getElementById('btn-calculate');
 btnCalculate.addEventListener('click',()=>{
     const namePokemon = document.getElementById('name-pokemon').value;
     const candyCount = document.getElementById('candy_count').value;
 
-    const calculateEvolution = document.getElementById('calculate-evolution'); 
-    const evolutionResult = document.getElementById('evolution-result'); 
+   const calculateEvolution = document.getElementById('calculate-evolution'); 
+   const evolutionResult = document.getElementById('evolution-result');
 
-    const resultado = pokemon.computeStats(data,namePokemon,candyCount);
-    console.log(resultado);
+   const resultado = pokemon.computeStats(data,namePokemon,candyCount);
+   console.log(resultado);  
 
-    const plantillaResultado = (data)=>{
-        for(let i = 0; i< data.length ;i++){
-            respuesta =`
-                <p>${data[i].evolution}</>
-                <p>${data[i].candy_evolution}</>
-            `;
-        }
-        return respuesta;
-    }
-    calculateEvolution.style.display = 'none';
-    evolutionResult.style.display = 'block';
-    evolutionResult.innerHTML= plantillaResultado(resultado);
   
+   const plantillaResultado = (data)=>{
+      for(let i = 0; i< data.length ;i++){
+          respuesta =`
+            <p>${data[i].pokemonCurrent }</p>
+            <p>${data[i].pokemonCurrentCandy}</p>
+            <img class="img-res" src='${data[i].pokemonCurrentImg}'>
+
+            <p>${data[i].pokemonEvolution}</p>
+            <p>${data[i].candy_evolution}</p>
+            <img class="img-res" src='${data[i]. pokemonEvolutionImg}'>
+            `;
+            }
+            return respuesta;
+        }
+        calculateEvolution.style.display = 'none';
+        evolutionResult.style.display = 'block';
+        evolutionResult.innerHTML= plantillaResultado(resultado); 
     
 
-});
+}); 
+
+
+
+
+
+
+
+
+
 
 
 
@@ -170,6 +186,5 @@ filterPokemon.addEventListener('change',()=>{
     condition = filterPokemon.value;
     const pokedexFiltrado = pokemon.filterData(data,condition);
     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-}); */
-
-
+}); 
+*/
