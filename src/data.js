@@ -18,7 +18,6 @@ const mostrarListaPokemon = (dataPoke) => {
 }
 //const dataPokedex = mostrarListaPokemon(data);
 
-
 /**** ORDENAR POKEMON ****/
 const sortData = (data,sortBy,sortOrder) =>{
     switch(sortOrder){
@@ -39,6 +38,7 @@ const sortData = (data,sortBy,sortOrder) =>{
 //console.log(sortData(dataPokedex,'az','ascendente'));
 
 /***  FILTRAR POKEMON ***/
+//1.Funcion propia 
 const filterData = (data,condition) =>{
   listaFiltrada = data.filter((element)=>{
     for(let i = 0 ; i < element.type.length ; i++){
@@ -50,7 +50,21 @@ const filterData = (data,condition) =>{
   return listaFiltrada;
 }
 //console.log(filterData(data,'Fire'));
-// 
+//2.Funcion de obtener solo el array de todos los tipos 
+const listType = (data) =>{
+  let arrTipos =[];
+  let tipo =[];
+  data.forEach(element => {
+    for(let i = 0 ; i < element.type.length ; i++){
+      arrTipos.push(element.type[i]);
+    }  
+    tipo = [...new Set(arrTipos)]
+    });
+    return tipo;
+ }
+ //console.log(tipos(data));
+
+//3.Funcion para la evolucion
 let evolucion1=[];
 let evolucion2=[];
 let evolucion3=[];
@@ -71,24 +85,12 @@ for (let i=0 ; i<POKEMON.pokemon.length ; i++){
     }
   }
 }
-console.log(evolucion1)
+//console.log(evolucion1)
 
-const listType = (data) =>{
- let arrTipos =[];
- let tipo =[];
- data.forEach(element => {
-   for(let i = 0 ; i < element.type.length ; i++){
-     arrTipos.push(element.type[i]);
-   }  
-   tipo = [...new Set(arrTipos)]
-   });
-   return tipo;
-}
-//console.log(tipos(data));
 
 
 /***** CALCULAR POKEMON ******/
-
+//1. Obtener una data que se ajuste a  la medida de el calculo para la evolucion 
 const dataListPokemon = (dataPoke) =>{
   dataCalculate =[] 
   for(let i = 0 ; i < dataPoke.length ; i++  ){
@@ -111,6 +113,7 @@ const dataListPokemon = (dataPoke) =>{
 }
 //console.log(dataListPokemon(data));
 
+//2. funcion de calculo de evolucion
 const computeStats = (dataPoke,pokemon,dulce) =>{
   dataCalculatePokemon = dataListPokemon(dataPoke);
   //buscando al pokemon 
@@ -137,41 +140,17 @@ const computeStats = (dataPoke,pokemon,dulce) =>{
       calculoEvolution = 0;
     break;
     }
-/*
-    arrResult.pokemonCurrent = pokemonFind.name, 
-    arrResult.pokemonCurrentImg = pokemonFind.img,
-    arrResult. pokemonCurrentCandy = dulce,
-    arrResult. pokemonEvolution = pokemonEvolution.name, 
-    arrResult. pokemonEvolutionImg = pokemonEvolution.img,
-    arrResult. candy_evolution = calculoEvolution;
-    */   
     arrResult.push({
       pokemonCurrent : pokemonFind.name, 
       pokemonCurrentImg : pokemonFind.img,
       pokemonCurrentCandy : dulce,
       pokemonEvolution :pokemonEvolution.name, 
       pokemonEvolutionImg :pokemonEvolution.img,
-      candy_evolution : calculoEvolution})
-  
-      /*
-
-    arrResult.push(
-      pokemonFind.name, 
-      pokemonFind.img,
-      dulce,
-      pokemonEvolution.name, 
-      pokemonEvolution.img,
-      calculoEvolution
-    ); */
+      candy_evolution : calculoEvolution});    
 
     return arrResult;      
   }
-
-/*  const hola =computeStats(data ,"Venusaur",101 );
-
- console.log(hola); */
-
-
+ // console.log(computeStats(data ,"Venusaur",101));
   
 
 window.pokemon = {

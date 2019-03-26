@@ -6,6 +6,10 @@ const pagePokedex = document.getElementById("page-pokedex");
 const pageEvolution = document.getElementById("page-evolution");
 const pageNews = document.getElementById("page-news");
 
+//FORMULARIO RESULT
+const calculateEvolution = document.getElementById('calculate-evolution'); 
+const evolutionResult = document.getElementById('evolution-result');
+
 
 main.addEventListener("click",(e)=>{
     pageHome.style.display = 'none';
@@ -15,10 +19,15 @@ main.addEventListener("click",(e)=>{
 
     if(e.target.id==="pokedex"){
         pagePokedex.style.display='block';
-        document.getElementById('list-pokemon').innerHTML= crearPlantilla(data);
+        document.getElementById('list-pokemon').innerHTML= crearPlantilla(dataPokedex);
     }
     else if(e.target.id==="evolution"){
-        pageEvolution.style.display='block';        
+        pageEvolution.style.display='block'; 
+        // LIMPIAR FORMULARIO 
+        calculateEvolution.style.display = 'block';
+        evolutionResult.style.display ='none';
+        limpiar();
+
     }
     else if(e.target.id==="news"){
         pageNews.style.display='block';
@@ -65,11 +74,63 @@ orderPokemon.addEventListener('change',()=>{
         sortOrder = 'descendente';
         break;
     }
-    const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
-    document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
+   const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
+   document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
 });
 
 // FILTRAR POKEMON
+
+//1.aqui ira lo de dibujar en el html 
+const filterPokemon = document.getElementById('filter-pokemon');
+const generarTipo = (listTipos)=>{
+    let types =[`<option disabled selected>Filtrar por:</option>`];
+
+    for (let i = 0; i < listTipos.length ; i++){
+       types += `<option value="${listTipos[i]}">${listTipos[i]}</option>`;
+    }
+    return types;
+};
+const tipos = pokemon.listType(data);//extraer tipos de pokemon 
+filterPokemon.innerHTML= generarTipo(tipos);  // DIBUJANDO LA LISTA 
+//2.Utilzando la funcion
+filterPokemon.addEventListener('change',()=>{
+    condition = filterPokemon.value;
+    const pokedexFiltrado = pokemon.filterData(data,condition);
+    document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+});
+
+// CALCULAR DATOS DE EVOLUCION 
+const btnCalculate = document.getElementById('btn-calculate');
+btnCalculate.addEventListener('click',()=>{
+    const namePokemon = document.getElementById('name-pokemon').value;
+    const candyCount = document.getElementById('candy_count').value;
+    const resultado = pokemon.computeStats(data,namePokemon,candyCount); // data resultado    
+    const plantillaResultado = (data)=>{
+        for(let i = 0; i< data.length ;i++){
+            respuesta =`
+                <h1>Tu pokemon </h1>
+                <p>${data[i].pokemonCurrent }</p>
+                <p>${data[i].pokemonCurrentCandy}</p>
+                <img class="img-res" src='${data[i].pokemonCurrentImg}'>
+                <h1> Evolucion </h1>
+                <p>${data[i].pokemonEvolution}</p>
+                <p>${data[i].candy_evolution}</p>
+                <img class="img-res" src='${data[i]. pokemonEvolutionImg}'>
+                `;
+        }
+        return respuesta;
+    }
+    calculateEvolution.style.display = 'none';
+    evolutionResult.style.display = 'block';
+    evolutionResult.innerHTML= plantillaResultado(resultado);    
+});
+
+const limpiar = () =>{
+    document.getElementById("form").reset();
+}
+
+
+/* FILTRADO EN PROCESO 
 const FilterSelect= document.getElementById('FilterSelect')
 FilterSelect.addEventListener('change',SelectFilter);
 let array; 
@@ -79,130 +140,27 @@ function SelectFilter(){
           array=["Grass","Poison","Fire","Flying","Water",
           "Bug","Normal","Electric","Ground","Fighting",
           "Psychic","Rock","Ice","Ghost","Dragon"];
-          
- let string='';
-   
-    for (let i = 0; i<array.length; i++) {
-      let eleccion=array[i];
 
-     string =string+ '<option>'+eleccion+'</option>';        
-    } 
-   string='<select id="filter">'+string+'</select>';
-    document.getElementById('Filter').innerHTML=string
-    
     }else if(a ==="2"){
-         array=['Evolucion1','Evolucion2','Evolucion3'];
-    let cadena='';
-
-    for(let i=0; i<array.length;i++){
-        elec=array[i]
-        
-        cadena =cadena+ '<option value="'+elec+'">'+elec+'</option>';
-    }
-    cadena='<select id="filterEvol">'+cadena+'</select>';
-    console.log(document.getElementById('Filter').innerHTML=cadena);
-
-    }else{
-        
+         array=['1ª Evolucion','2ª Evolucion','3ª Evolucion'];
+    }else{        
          array=[];
     }
-    
-    const filterEvol=document.getElementById('filterEvol')
-    filterEvol.addEventListener('change',()=>{
-
-    })
-
-    const filter=document.getElementById("filter");
-    filter.addEventListener('change',()=>{
-     condition=filter.value;
-     const pokedexFiltrado=pokemon.filterData(data,condition);
-     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-     })
-    
-};
-
-
-// CALCULAR DATOS DE EVOLUCION 
-
-
-
-const btnCalculate = document.getElementById('btn-calculate');
-btnCalculate.addEventListener('click',()=>{
-    const namePokemon = document.getElementById('name-pokemon').value;
-    const candyCount = document.getElementById('candy_count').value;
-
-   const calculateEvolution = document.getElementById('calculate-evolution'); 
-   const evolutionResult = document.getElementById('evolution-result');
-
-   const resultado = pokemon.computeStats(data,namePokemon,candyCount);
-   console.log(resultado);  
-
-  
-   const plantillaResultado = (data)=>{
-      for(let i = 0; i< data.length ;i++){
-          respuesta =`
-            <p>${data[i].pokemonCurrent }</p>
-            <p>${data[i].pokemonCurrentCandy}</p>
-            <img class="img-res" src='${data[i].pokemonCurrentImg}'>
-
-            <p>${data[i].pokemonEvolution}</p>
-            <p>${data[i].candy_evolution}</p>
-            <img class="img-res" src='${data[i]. pokemonEvolutionImg}'>
-            `;
-            }
-            return respuesta;
-        }
-        calculateEvolution.style.display = 'none';
-        evolutionResult.style.display = 'block';
-        evolutionResult.innerHTML= plantillaResultado(resultado); 
-    
-
-}); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-const filterPokemon = document.getElementById('filter-pokemon');
-filterPokemon.addEventListener('change',()=>{
-    condition = filterPokemon.value;
-     const pokedexFiltrado = pokemon.filterData(data,condition);
-//    // console.log(pokedexFiltrado);
-     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
- });
-
-//aqui ira lo de dibujar
- 
-const filterPokemon = document.getElementById('filter-pokemon');
-const generarTipo = (listTipos)=>{
-    let types =[`<option disabled selected>Filtrar por:</option>`];
-    for (let i = 0; i < listTipos.length ; i++){
-       types += `<option value="${listTipos[i]}">${listTipos[i]}</option>`;
+   let string='';
+      for (let i = 0; i<array.length; i++) {
+      let eleccion=array[i];   
+     string =string+ '<option value="'+eleccion+'">'+eleccion+'</option>';        
     }
-    return types;
-};
-const tipos = pokemon.listType(data);
-filterPokemon.innerHTML= generarTipo(tipos);
+    
+    string='<select id="filterType">'+string+'</select>';
+    document.getElementById('FilterType').innerHTML=string
 
-filterPokemon.addEventListener('change',()=>{
-    condition = filterPokemon.value;
-    const pokedexFiltrado = pokemon.filterData(data,condition);
-    document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-}); 
+    const filterType=document.getElementById('filterType');
+    filterType.addEventListener('change',()=>{
+        condition=filterType.value;
+        const pokedexFiltrado=pokemon.filterData(data,condition);
+        console.log(pokedexFiltrado);
+        document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+    });
+}
 */
