@@ -80,39 +80,25 @@ function SelectFilter(){
           "Bug","Normal","Electric","Ground","Fighting",
           "Psychic","Rock","Ice","Ghost","Dragon"];
           
- let string='';
-   
-    for (let i = 0; i<array.length; i++) {
-      let eleccion=array[i];
-
-     string =string+ '<option>'+eleccion+'</option>';        
-    } 
-   string='<select id="filter">'+string+'</select>';
-    document.getElementById('Filter').innerHTML=string
+ 
     
     }else if(a ==="2"){
          array=['Evolucion1','Evolucion2','Evolucion3'];
-    let cadena='';
-
-    for(let i=0; i<array.length;i++){
-        elec=array[i]
-        
-        cadena =cadena+ '<option value="'+elec+'">'+elec+'</option>';
-    }
-    cadena='<select id="filterEvol">'+cadena+'</select>';
-    console.log(document.getElementById('Filter').innerHTML=cadena);
-
     }else{
         
          array=[];
     }
-    
-    const filterEvol=document.getElementById('filterEvol')
-    filterEvol.addEventListener('change',()=>{
+    let string='';
+   
+    for (let i = 0; i<array.length; i++) {
+      let eleccion=array[i];
 
-    })
-
+     string =string+ '<option values="'+eleccion+'">'+eleccion+'</option>';        
+    } 
+    string='<select id="filter">'+string+'</select>';
+    document.getElementById('Filter').innerHTML=string;
     const filter=document.getElementById("filter");
+
     filter.addEventListener('change',()=>{
      condition=filter.value;
      const pokedexFiltrado=pokemon.filterData(data,condition);
@@ -120,8 +106,6 @@ function SelectFilter(){
      })
     
 };
-
-
 // CALCULAR DATOS DE EVOLUCION 
 
 const btnCalculate = document.getElementById('btn-calculate');

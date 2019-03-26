@@ -50,28 +50,36 @@ const filterData = (data,condition) =>{
   return listaFiltrada;
 }
 //console.log(filterData(data,'Fire'));
-// 
-let evolucion1=[];
-let evolucion2=[];
-let evolucion3=[];
+
+let Evolucion1=[];
+let Evolucion2=[];
+let Evolucion3=[];
 for (let i=0 ; i<POKEMON.pokemon.length ; i++){
   let element=POKEMON.pokemon[i];
   if(element.prev_evolution === undefined)
   {
-    evolucion1.push(element);
+    Evolucion1.push(element);
+    Evolucion2=[];
+    Evolucion3=[];
     
   
   }else{ 
     let cantidadPrev=element.prev_evolution.length
     switch(cantidadPrev){
       case 1:
-      evolucion2.push(element);break;
+      Evolucion2.push(element)
+      Evolucion1=[];
+      Evolucion3=[];
+      ;break;
       case 2:
-      evolucion3.push(element);break;
+      Evolucion3.push(element);
+      Evolucion1=[];
+      Evolucion2=[];
+      break;
     }
   }
 }
-console.log(evolucion1)
+
 
 const listType = (data) =>{
  let arrTipos =[];
