@@ -7,6 +7,9 @@
   },
   "extends": "eslint:recommended",
   "globals": {
-    "example": false
+    "example": false,
+    "Set" : false,
+    "POKEMON" : false,
+    "pokemon" : false
   }
 }
