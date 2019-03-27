@@ -53,7 +53,7 @@ section{
     margin-top:100px;
 }
 /* ocultar paginas */
-#page-pokedex , #page-evolution , #page-news {
+#page-pokedex , #page-evolution , #page-news , #evolution-result {
     display: none;
 }
 
@@ -66,9 +66,6 @@ section{
 .evolution , .instructions {   
     border : 1px solid #2B4D86
 }
-.calculate-evolution ,.evolution-result{
-    background: #4CAF50;
-}
 
 /****** Instruciones *****/
 .instructions .list-instructions {
@@ -79,7 +76,8 @@ section{
 /****** Formulario *****/
 form{
     border-radius: 4px;	
-    background: #E3A90B;
+    border: 1px solid  #E3A90B;
+    background-color: #f2f2f2
 }
 .form-group{
     padding: 1rem;
@@ -103,51 +101,6 @@ button{
   cursor: pointer; 
   font-family: 'Concert One', cursive; 
 }
-
-
-/******* Mobile First ******/
-.col-xs-12 { 
-    width: 100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /***** estilos para cada pokemon ***/
 .list-pokemon{
@@ -193,4 +146,3 @@ h1{
 -ms-transform: scale(1.1);
 transform: scale(1.1);
 }
-

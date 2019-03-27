@@ -6,6 +6,9 @@ const pagePokedex = document.getElementById("page-pokedex");
 const pageEvolution = document.getElementById("page-evolution");
 const pageNews = document.getElementById("page-news");
 
+//FORMULARIO RESULT
+const calculateEvolution = document.getElementById('calculate-evolution'); 
+const evolutionResult = document.getElementById('evolution-result');
 
 main.addEventListener("click", (e) => {
     pageHome.style.display = 'none';
@@ -13,12 +16,18 @@ main.addEventListener("click", (e) => {
     pageEvolution.style.display = 'none';
     pageNews.style.display = 'none';
 
-    if (e.target.id === "pokedex") {
-        pagePokedex.style.display = 'block';
-        document.getElementById('list-pokemon').innerHTML = crearPlantilla(data);
+
+    if(e.target.id==="pokedex"){
+        pagePokedex.style.display='block';
+        document.getElementById('list-pokemon').innerHTML= crearPlantilla(dataPokedex);
     }
-    else if (e.target.id === "evolution") {
-        pageEvolution.style.display = 'block';
+    else if(e.target.id==="evolution"){
+        pageEvolution.style.display='block'; 
+        // LIMPIAR FORMULARIO 
+        calculateEvolution.style.display = 'block';
+        evolutionResult.style.display ='none';
+        limpiar();
+
     }
     else if (e.target.id === "news") {
         pageNews.style.display = 'block';
@@ -27,11 +36,10 @@ main.addEventListener("click", (e) => {
         pageHome.style.display = 'block';
     }
 });
-
-/*2.FUNCIONES */
-
+/**** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
-const dataPokedex = pokemon.mostrarListaPokemon(data);
+
+const dataPokedex = window.pokemon.mostrarListaPokemon(data); 
 
 // MOSTRAR POKEMON 
 const crearPlantilla = (data) => {
@@ -48,7 +56,6 @@ const crearPlantilla = (data) => {
     });
     return listaMostrada;
 };
-
 // ORDENAR POKEMON
 const orderPokemon = document.getElementById('order-pokemon');
 orderPokemon.addEventListener('change', () => {
@@ -65,6 +72,7 @@ orderPokemon.addEventListener('change', () => {
             sortOrder = 'descendente';
             break;
     }
+
     const pokedexOrdenado = pokemon.sortData(dataPokedex, selectOrder, sortOrder);
     document.getElementById('list-pokemon').innerHTML = crearPlantilla(pokedexOrdenado);
 });
@@ -113,12 +121,39 @@ function SelectFilter() {
 
 };
 
-// CALCULAR DATOS DE EVOLUCION 
+   const pokedexOrdenado = pokemon.sortData(dataPokedex,selectOrder,sortOrder);
+   document.getElementById('list-pokemon').innerHTML= crearPlantilla(pokedexOrdenado);
 
+
+
+// FILTRAR POKEMON
+
+//1.aqui ira lo de dibujar en el html 
+const filterPokemon = document.getElementById('filter-pokemon');
+const generarTipo = (listTipos)=>{
+    let types =[`<option disabled selected>Filtrar por:</option>`];
+
+    for (let i = 0; i < listTipos.length ; i++){
+       types += `<option value="${listTipos[i]}">${listTipos[i]}</option>`;
+    }
+    return types;
+};
+const tipos = pokemon.listType(data);//extraer tipos de pokemon 
+filterPokemon.innerHTML= generarTipo(tipos);  // DIBUJANDO LA LISTA 
+//2.Utilzando la funcion
+filterPokemon.addEventListener('change',()=>{
+    let condition = filterPokemon.value;
+    const pokedexFiltrado = pokemon.filterData(data,condition);
+    document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
+});
+
+
+// CALCULAR DATOS DE EVOLUCION 
 const btnCalculate = document.getElementById('btn-calculate');
 btnCalculate.addEventListener('click', () => {
     const namePokemon = document.getElementById('name-pokemon').value;
     const candyCount = document.getElementById('candy_count').value;
+
 
     const calculateEvolution = document.getElementById('calculate-evolution');
     const evolutionResult = document.getElementById('evolution-result');
@@ -132,50 +167,32 @@ btnCalculate.addEventListener('click', () => {
                 <p>${data[i].evolution}</>
                 <p>${data[i].candy_evolution}</>
             `;
+
+    const resultado = pokemon.computeStats(data,namePokemon,candyCount); // data resultado    
+    const plantillaResultado = (data)=>{
+        let respuesta;
+        for(let i = 0; i< data.length ;i++){
+            respuesta =`
+                <h1>Tu pokemon </h1>
+                <p>${data[i].pokemonCurrent }</p>
+                <p>${data[i].pokemonCurrentCandy}</p>
+                <img class="img-res" src='${data[i].pokemonCurrentImg}'>
+                <h1> Evolucion </h1>
+                <p>${data[i].pokemonEvolution}</p>
+                <p>${data[i].candy_evolution}</p>
+                <img class="img-res" src='${data[i]. pokemonEvolutionImg}'>
+                `;
+
         }
         return respuesta;
     }
     calculateEvolution.style.display = 'none';
     evolutionResult.style.display = 'block';
-    evolutionResult.innerHTML = plantillaResultado(resultado);
-});
 
 
-
-
-
-
-
-
-
-
-
-/*
-const filterPokemon = document.getElementById('filter-pokemon');
-filterPokemon.addEventListener('change',()=>{
-    condition = filterPokemon.value;
-     const pokedexFiltrado = pokemon.filterData(data,condition);
-//    // console.log(pokedexFiltrado);
-     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
- });
-
-//aqui ira lo de dibujar
-
-const filterPokemon = document.getElementById('filter-pokemon');
-const generarTipo = (listTipos)=>{
-    let types =[`<option disabled selected>Filtrar por:</option>`];
-    for (let i = 0; i < listTipos.length ; i++){
-       types += `<option value="${listTipos[i]}">${listTipos[i]}</option>`;
-    }
-    return types;
+    evolutionResult.innerHTML= plantillaResultado(resultado);    
 };
-const tipos = pokemon.listType(data);
-filterPokemon.innerHTML= generarTipo(tipos);
 
-filterPokemon.addEventListener('change',()=>{
-    condition = filterPokemon.value;
-    const pokedexFiltrado = pokemon.filterData(data,condition);
-    document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
-}); */
-
-
+const limpiar = () =>{
+    document.getElementById("form").reset();
+}

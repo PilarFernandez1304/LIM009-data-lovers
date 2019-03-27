@@ -61,6 +61,7 @@
             </select>
 
 
+
             <select class="type-filter" id="FilterSelect">
               <option value="0" >Filtrar Por</option>
               <option value="1">Tipo</option>
@@ -68,7 +69,13 @@
              
             </select>
             <div id="Filter"> 
+
             </div>
+            -->
+            <select class="type-filter" id="filter-pokemon">
+                           
+            </select>
+            
            <div  class="list-pokemon" id="list-pokemon"></div>
           </div>
         </div>
@@ -96,7 +103,7 @@
             <!--Section Formalario-->
             <article  class="calculate-evolution style-content" id="calculate-evolution">
               <h1>Descubre cuanto le falta a tu pokemon para evolcionar</h1> 
-              <form class="style-content" >
+              <form class="style-content"  id="form" >
                 <div class="form-group">
                   <label for="name-pokemon">Nombre de tu pokemon :</label>
                   <input class="form-control" id="name-pokemon" type="text" placeholder="Nombre pokemon" required="required" />
