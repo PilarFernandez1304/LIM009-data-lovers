@@ -98,38 +98,51 @@ const dataListPokemon = (dataPoke) =>{
 };
 //console.log(dataListPokemon(data));
 //2. funcion de calculo de evolucion
-const computeStats = (dataPoke,pokemon,dulce) =>{
+const computeStats = (dataPoke,pokemon,candyInput) =>{
   const  dataCalculatePokemon = dataListPokemon(dataPoke);
-  //buscando al pokemon 
-  const pokemonFind = dataCalculatePokemon.find(poke=>poke.name === pokemon);
-  const  numberEvolutions = pokemonFind.num_evolutions;          // saber el numero de evoluciones 
+  //buscando al pokemon
+  const  pokemonFind = dataCalculatePokemon.find(poke=>poke.name === pokemon);
+  const  numberEvolutions = pokemonFind.num_evolutions;    // saber el numero de evoluciones 
   let arrResult = [];                                     // almacenar los datos de resultados 
   let pokemonEvolution ;                                  // Evolucion de Pokemon
   let calculoEvolution;                                  // Hallar dulces que falta 
+
+  if(numberEvolutions > 0){
+    pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );
+    calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(candyInput));  
+  }
+  else{
+    pokemonEvolution = pokemonFind
+    calculoEvolution = 0;
+  }
+/*
   switch (numberEvolutions){  
     case 2: // No ha tenido NINGUNA evolucion
     case 1:  // Ya ha tenido 1 EVOLUCION              
-      if( dulce < pokemonFind.candy_count ){
+      if( candyInput < pokemonFind.candy_count ){
           pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );
-          calculoEvolution = pokemonFind.candy_count - parseInt(dulce);
+          calculoEvolution = pokemonFind.candy_count - parseInt(candyInput);
       }
       else{
           pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );        
-          calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(dulce));
+          calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(candyInput));
       }          
     break;
     case 0:  //Tiene todas la evoluciones 
       pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.name )
       calculoEvolution = 0;
     break;
-    }
+  }*/
     arrResult.push({
-    pokemonCurrent : pokemonFind.name, 
-    pokemonCurrentImg : pokemonFind.img,
-    pokemonCurrentCandy : dulce,
-    pokemonEvolution :pokemonEvolution.name, 
+    pokemonFirstName : pokemonFind.name, 
+    pokemonFirstImg : pokemonFind.img,
+    pokemonFirstCandy:pokemonFind.candy_count,
+    pokemonFirstInput : candyInput,
+
+    pokemonEvolutionName :pokemonEvolution.name, 
     pokemonEvolutionImg :pokemonEvolution.img,
-    candy_evolution : calculoEvolution});    
+    candy_evolution : calculoEvolution
+    });    
 
     return arrResult;
 };

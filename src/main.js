@@ -108,32 +108,64 @@ function SelectFilter() {
        }
    });
 }
+/*
+console.log(pokemon.computeStats(data,'Venusaur',23));
+console.log(pokemon.computeStats(data,'Ivysaur',23));
+console.log(pokemon.computeStats(data,'Bulbasaur',27));
+*/
+
+
 // CALCULAR DATOS DE EVOLUCION
+
 const btnCalculate = document.getElementById('btn-calculate');
-btnCalculate.addEventListener('click',()=>{
+btnCalculate.addEventListener('click',(e)=>{
+    e.preventDefault();
     const namePokemon = document.getElementById('name-pokemon').value;
     const candyCount = document.getElementById('candy_count').value;
-    const resultado = pokemon.computeStats(data,namePokemon,candyCount); // data resultado    
+    const resultado = pokemon.computeStats(data,namePokemon,candyCount); // data resultado
+    
     const plantillaResultado = (data)=>{
         let respuesta;
         for(let i = 0; i< data.length ;i++){
-            respuesta =`
-                <h1>Tu pokemon </h1>
-                <p>${data[i].pokemonCurrent }</p>
-                <p>${data[i].pokemonCurrentCandy}</p>
-                <img class="img-res" src='${data[i].pokemonCurrentImg}'>
-                <h1> Evolucion </h1>
-                <p>${data[i].pokemonEvolution}</p>
-                <p>${data[i].candy_evolution}</p>
+            if(data[i].pokemonFirstCandy === undefined){
+                respuesta =`
+                <h1>Tu pokemon ya tuvo todas sus evoluciones :</h1>
+                <p>${data[i].pokemonFirstName}</p>
+                <img class="img-res" src='${data[i].pokemonFirstImg}'>
+                <p> Te sobra ${data[i].pokemonFirstInput}</p>`;                
+            } 
+            else {
+                if(data[i].pokemonFirstInput < data[i].pokemonFirstCandy){
+                    respuesta =`
+                <h1>Tu pokemon  es :</h1>
+                <p>${data[i].pokemonFirstName}</p>
+                <img class="img-res" src='${data[i].pokemonFirstImg}'>
+                <h1> Tienes  ${data[i].pokemonFirstInput} dulces, te faltan  ${data[i].candy_evolution} para evolucionar a :</h1>                
+                <p>${data[i].pokemonEvolutionName}</p>
                 <img class="img-res" src='${data[i]. pokemonEvolutionImg}'>
                 `;
+                } 
+                else{
+                    respuesta =`
+                    <h1>Tu pokemon  es :</h1>
+                    <p>${data[i].pokemonFirstName}</p>
+                    <img class="img-res" src='${data[i].pokemonFirstImg}'>
+                    <h1>Este ya debio evolucionar a:</h1>                                    
+                    <p>${data[i].pokemonEvolutionName}</p>
+                    <img class="img-res" src='${data[i]. pokemonEvolutionImg}'>
+                    <h1>Tienes ${data[i].pokemonFirstInput} dulces , te sobran  ${data[i].candy_evolution} para la siguiente evolcion</h1>
+                    `;                
+
+                }               
+            }          
         }
         return respuesta;
-    }
+    }    
     calculateEvolution.style.display = 'none';
     evolutionResult.style.display = 'block';
     evolutionResult.innerHTML= plantillaResultado(resultado);    
 });
+
 
 const limpiar = () =>{
     document.getElementById("form").reset();
