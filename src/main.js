@@ -10,7 +10,6 @@ const pageNews = document.getElementById("page-news");
 const calculateEvolution = document.getElementById('calculate-evolution'); 
 const evolutionResult = document.getElementById('evolution-result');
 
-
 main.addEventListener("click",(e)=>{
     pageHome.style.display = 'none';
     pagePokedex.style.display = 'none';
@@ -27,7 +26,6 @@ main.addEventListener("click",(e)=>{
         calculateEvolution.style.display = 'block';
         evolutionResult.style.display ='none';
         limpiar();
-
     }
     else if(e.target.id==="news"){
         pageNews.style.display='block';
@@ -36,12 +34,9 @@ main.addEventListener("click",(e)=>{
         pageHome.style.display='block';
     }
 });
-
-/*2.FUNCIONES */
-
+/**** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
-const dataPokedex = pokemon.mostrarListaPokemon(data); 
-
+const dataPokedex = window.pokemon.mostrarListaPokemon(data); 
 // MOSTRAR POKEMON 
 const crearPlantilla = (data) => {
     let listaMostrada = [];
@@ -57,7 +52,6 @@ const crearPlantilla = (data) => {
     });
     return listaMostrada;
 };
-
 // ORDENAR POKEMON
 const orderPokemon = document.getElementById('order-pokemon');
 orderPokemon.addEventListener('change',()=>{
@@ -94,7 +88,7 @@ const tipos = pokemon.listType(data);//extraer tipos de pokemon
 filterPokemon.innerHTML= generarTipo(tipos);  // DIBUJANDO LA LISTA 
 //2.Utilzando la funcion
 filterPokemon.addEventListener('change',()=>{
-    condition = filterPokemon.value;
+    let condition = filterPokemon.value;
     const pokedexFiltrado = pokemon.filterData(data,condition);
     document.getElementById('list-pokemon').innerHTML=crearPlantilla(pokedexFiltrado);
 });
@@ -106,6 +100,7 @@ btnCalculate.addEventListener('click',()=>{
     const candyCount = document.getElementById('candy_count').value;
     const resultado = pokemon.computeStats(data,namePokemon,candyCount); // data resultado    
     const plantillaResultado = (data)=>{
+        let respuesta;
         for(let i = 0; i< data.length ;i++){
             respuesta =`
                 <h1>Tu pokemon </h1>
