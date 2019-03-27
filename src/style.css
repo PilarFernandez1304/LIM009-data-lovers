@@ -6,6 +6,7 @@
     padding: 0;  
     font-family: 'Margarine', cursive;
  }
+
  .img-responsive {
     max-width: 100%;
     height: auto;
@@ -16,9 +17,34 @@
     text-align: center;
     padding: 1rem;
 }
+
 .row:before, .row:after {
-    content: " ";
     display: table;
+}
+/****Slider****/
+section{
+    position: relative;
+}
+
+.conteinerSlider{
+    width: 300%; 
+    display: flex;
+      
+}
+.conteinerImg{
+    width: 33.4%;
+   height: 85vh;   
+
+}
+.conteinerSlider img{
+    width: 100%;
+    height: 100%;   
+}
+section img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -2px;
 }
 .row:after {
     clear: both;
@@ -30,6 +56,7 @@ section{
 #page-pokedex , #page-evolution , #page-news {
     display: none;
 }
+
 
 /* ------------------ ESTILOS GENERALES - PAGE EVOLUTION ------------- */
 .style-content{

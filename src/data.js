@@ -75,9 +75,9 @@ for (let i = 0; i < data.length; i++) {
   }
 }
   switch (condicion) {
-    case "Evolucion1": return Evolucion1; break;
-    case "Evolucion2": return Evolucion2; break;
-    case "Evolucion3": return Evolucion3; break;
+    case "Evolucion1": return Evolucion1; 
+    case "Evolucion2": return Evolucion2;
+    case "Evolucion3": return Evolucion3;
   }
 }
 
