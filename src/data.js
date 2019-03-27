@@ -50,11 +50,18 @@ const filterData = (data, condition) => {
   return listaFiltrada;
 }
 //console.log(filterData(data,'Fire'));
+ 
+
+//data = POKEMON.pokemon;
+
+
+
+const NivelEvolution=(data,condicion)=> {
 let Evolucion1 = [];
 let Evolucion2 = [];
 let Evolucion3 = [];
-for (let i = 0; i < POKEMON.pokemon.length; i++) {
-  let element = POKEMON.pokemon[i];
+for (let i = 0; i < data.length; i++) {
+  let element = data[i];
   if (element.prev_evolution === undefined) {
     Evolucion1.push(element);
   } else {
@@ -67,8 +74,6 @@ for (let i = 0; i < POKEMON.pokemon.length; i++) {
     }
   }
 }
-
-function NivelEvolu(condicion) {
   switch (condicion) {
     case "Evolucion1": return Evolucion1; break;
     case "Evolucion2": return Evolucion2; break;
@@ -174,7 +179,7 @@ window.pokemon = {
   mostrarListaPokemon: mostrarListaPokemon,
   sortData: sortData,
   filterData: filterData,
-  NivelEvolu: NivelEvolu,
+  NivelEvolution: NivelEvolution,
   listType: listType,
   dataListPokemon: dataListPokemon,
   computeStats: computeStats

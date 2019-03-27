@@ -102,7 +102,7 @@ function SelectFilter() {
     filter.addEventListener('change', () => {
         condition = filter.value;
         if (condition === 'Evolucion1' || condition === 'Evolucion2' || condition === 'Evolucion3') {
-            const filterEvolucion = pokemon.NivelEvolu(condition);
+            const filterEvolucion = pokemon.NivelEvolution(data,condition);
             document.getElementById('list-pokemon').innerHTML = crearPlantilla(filterEvolucion)
 
         } else {
@@ -112,6 +112,7 @@ function SelectFilter() {
     })
 
 };
+
 // CALCULAR DATOS DE EVOLUCION 
 
 const btnCalculate = document.getElementById('btn-calculate');
