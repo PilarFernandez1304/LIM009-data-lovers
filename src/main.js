@@ -29,8 +29,7 @@ main.addEventListener("click",(e)=>{
     }
     else if(e.target.id==="home"){
       pageHome.style.display='block';
-    }
-       
+    }       
 });
 /**** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
@@ -43,9 +42,7 @@ const crearPlantilla = (data) => {
         <div class="card-item grow">
         <h1>N° ${data.num}</h1>
         <img class="img-res" src='${data.img}'>
-        <p>${data.name}</p>
-        </div>
-        `;
+        <p>${data.name}</p></div>`;
         listaMostrada +=card;
     });
     return listaMostrada;

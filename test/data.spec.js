@@ -4,27 +4,16 @@ require('../src/data');
 require('./data.spec.js');
 
 
-
-/*
-describe('example', () => {
+describe('pokemon', () => {  
+  test('debería ser un object', () => {
+    expect(typeof pokemon).toBe('object');
+  });
   
-  it('debería ser una función', () => {
-    assert.equal(typeof example, 'function');
+  describe("mostrar lista pokemon" , ()=>{
+    test('mostrarListaPokemon  deberia ser una funcion', () => {
+      expect(typeof pokemon.mostrarListaPokemon).toBe('function');
+    });
+
   });
 
-  it('debería retornar "example"', () => {
-    assert.equal(example(), 'example');
-  });
-})
-*/
-
-describe('pokemon', () => {
-  
-  it('debería ser un object', () => {
-    assert.equal(typeof pokemon, 'object');
-  });
- /*
-  it('debería retornar "example"', () => {
-    assert.equal(example(), 'example');
-  });*/
 })

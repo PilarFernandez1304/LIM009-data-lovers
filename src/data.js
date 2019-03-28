@@ -23,6 +23,7 @@ const sortData = (data,sortBy,sortOrder) => {
   }
   return listaOrdenada;
 };
+
 /***  FILTRAR POKEMON ***/
 //1.Funcion propia 
 const filterData = (data,condition) =>{
