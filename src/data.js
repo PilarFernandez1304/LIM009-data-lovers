@@ -4,7 +4,7 @@ const mostrarListaPokemon = (dataPoke) => {
   return{num : data.num , img : data.img , name : data.name , avg_spawns : data.avg_spawns};
   });
   return pokedex;
-};
+};/*
 /**** ORDENAR POKEMON ****/
 const sortData = (data,sortBy,sortOrder) => {
   let listaOrdenada;    
@@ -23,7 +23,6 @@ const sortData = (data,sortBy,sortOrder) => {
   }
   return listaOrdenada;
 };
-
 /***  FILTRAR POKEMON ***/
 //1.Funcion propia 
 const filterData = (data,condition) =>{
@@ -36,6 +35,7 @@ const filterData = (data,condition) =>{
   });
   return listaFiltrada;
 };
+
 //2.Funcion de obtener solo el array de todos los tipos 
 const listType = (data) =>{
   const arrTipos =[];
@@ -57,7 +57,8 @@ const NivelEvolution = (data,condicion) => {
     let element = data[i];
     if (element.prev_evolution === undefined) {
       Evolucion1.push(element);
-    } else {
+    }
+    else {
       let cantidadPrev = element.prev_evolution.length
       switch (cantidadPrev) {
         case 1:
@@ -77,7 +78,7 @@ const NivelEvolution = (data,condicion) => {
 /***** CALCULAR POKEMON ******/
 //1. Obtener una data que se ajuste a  la medida de el calculo para la evolucion 
 const dataListPokemon = (dataPoke) =>{
-  const dataCalculate =[] 
+  const dataCalculate =[];
   let propiedad;
   for(let i = 0 ; i < dataPoke.length ; i++  ){
     propiedad = dataPoke[i].hasOwnProperty('next_evolution');
@@ -116,24 +117,6 @@ const computeStats = (dataPoke,pokemon,candyInput) =>{
     pokemonEvolution = pokemonFind
     calculoEvolution = 0;
   }
-/*
-  switch (numberEvolutions){  
-    case 2: // No ha tenido NINGUNA evolucion
-    case 1:  // Ya ha tenido 1 EVOLUCION              
-      if( candyInput < pokemonFind.candy_count ){
-          pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );
-          calculoEvolution = pokemonFind.candy_count - parseInt(candyInput);
-      }
-      else{
-          pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );        
-          calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(candyInput));
-      }          
-    break;
-    case 0:  //Tiene todas la evoluciones 
-      pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.name )
-      calculoEvolution = 0;
-    break;
-  }*/
     arrResult.push({
     pokemonFirstName : pokemonFind.name, 
     pokemonFirstImg : pokemonFind.img,
@@ -147,6 +130,7 @@ const computeStats = (dataPoke,pokemon,candyInput) =>{
 
     return arrResult;
 };
+
  // console.log(computeStats(data ,"Venusaur",101)); 
 window.pokemon = {
   mostrarListaPokemon: mostrarListaPokemon,

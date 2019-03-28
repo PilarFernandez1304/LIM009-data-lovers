@@ -33,7 +33,7 @@ main.addEventListener("click",(e)=>{
 });
 /**** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
-const dataPokedex = window.pokemon.mostrarListaPokemon(data);
+const dataPokedex = pokemon.mostrarListaPokemon(data);
 // MOSTRAR POKEMON 
 const crearPlantilla = (data) => {
     let listaMostrada = [];
