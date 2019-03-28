@@ -4,7 +4,7 @@ const main = document.getElementById("main");
 const pageHome = document.getElementById("page-home");
 const pagePokedex = document.getElementById("page-pokedex");
 const pageEvolution = document.getElementById("page-evolution");
-const pageNews = document.getElementById("page-news");
+//const pageNews = document.getElementById("page-news");
 
 //FORMULARIO RESULT
 const calculateEvolution = document.getElementById('calculate-evolution'); 
@@ -14,7 +14,7 @@ main.addEventListener("click",(e)=>{
     pageHome.style.display = 'none';
     pagePokedex.style.display = 'none';
     pageEvolution.style.display = 'none';
-    pageNews.style.display = 'none';
+   // pageNews.style.display = 'none';
 
     if(e.target.id==="pokedex"){
         pagePokedex.style.display='block';
@@ -27,12 +27,10 @@ main.addEventListener("click",(e)=>{
         evolutionResult.style.display ='none';
         limpiar();
     }
-    else if(e.target.id==="news"){
-        pageNews.style.display='block';
+    else if(e.target.id==="home"){
+      pageHome.style.display='block';
     }
-    else{
-        pageHome.style.display='block';
-    }
+       
 });
 /**** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
@@ -94,10 +92,10 @@ function SelectFilter() {
    }
    string = '<select id="filter">' + string + '</select>';
    document.getElementById('Filter').innerHTML = string;
-   const filter = document.getElementById("filter");
+   const filter = document.getElementById("filter"); // seleccion de la condicion a filtrar 
 
    filter.addEventListener('change', () => {
-       let condition = filter.value;
+       let condition = filter.value; // value
        if (condition === 'Evolucion1' || condition === 'Evolucion2' || condition === 'Evolucion3') {
            const filterEvolucion = pokemon.NivelEvolution(data,condition);
            document.getElementById('list-pokemon').innerHTML = crearPlantilla(filterEvolucion)
