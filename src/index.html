@@ -13,16 +13,15 @@
       <div class="container-header">
         <div class="row">
           <div class="col-xs-12 nav">
-            <img class="img-responsive" src="img/logomin.png" alt="logo" >
+            <img src="img/logomin.png"  alt="logo" >
             <input type="checkbox" id="toggle"/>
-            <label for="toggle"><i class="fas fa-bars"></i></label>
-            
+            <label for="toggle"><i class="fas fa-bars"></i></label>            
             <nav class="navbar" > 
               <ul class="main-nav" id="main">
                 <li><a href="#index"    class="nav-links" id="home"> Inicio </a></li>
                 <li><a href="#Pokedex"  class="nav-links" id="pokedex"> Pokedex </a></li>
-                <li><a href="#Noticias" class="nav-links" id="evolution"> Evolución </a></li> 
-                <li><a href="#Noticias" class="nav-links" id="news"> Noticias </a></li>    
+                <li><a href="#Evolucion" class="nav-links" id="evolution"> Evolución </a></li> 
+                <li><a href="https://pokemongolive.com/es/" class="nav-links" id="news"> Noticias </a></li>    
               </ul>
             </nav>                         
           </div>
@@ -34,49 +33,37 @@
       <div class="row">
         <div class="col-xs-12">
           <section id="Slider">
-            <div class="conteinerSlider">
-              <div class="conteinerImg"><img src="img/imgSlider/Slider1.jpg" alt=""></div>
-              <div class="conteinerImg"><img src="img/imgSlider/Slider2.jpg" alt=""></div>
-              <div class="conteinerImg"><img src="img/imgSlider/Slider3.jpg" alt=""></div>
+            <div id="conteiner" class="conteinerSlider">
+              <div class="conteinerImg"><img src="img/imgSlider/Slider1.jpg" ></div>
+              <div class="conteinerImg"><img src="img/imgSlider/Slider2.jpg" ></div>
+              <div class="conteinerImg"><img src="img/imgSlider/Slider3.jpg" ></div>
             </div>
-            <img class="btnLeft" src="img/iconSlider/flecha-hacia-la-izquierda.png" alt="">
-            <img class="btnRight" src="img/iconSlider/flecha-derecha.png" alt="">    
-          </section>      
+            <!-- <img id='left'class="btnLeft" src="img/iconSlider/flecha-hacia-la-izquierda.png" >
+            <img id="right" class="btnRight" src="img/iconSlider/flecha-derecha.png" >     -->
+          </section>          
         </div>
       </div>
     </section> 
-  
+
     <!--Section Pokedex -->
     <section id="page-pokedex">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
             <h1>Conoce a los 151 Pokemon de la regio Kanto</h1>
-
             <select class="type-order" id="order-pokemon">
               <option disabled selected>Ordenar por:</option>
               <option value="avg_spawns"> Apariciones </option> 
               <option value="az"> A - Z </option> 
               <option value="za"> Z - A </option>
-            </select>
-
-
-
+            </select>            
             <select class="type-filter" id="FilterSelect">
               <option value="0" >Filtrar Por</option>
               <option value="1">Tipo</option>
-              <option value="2">Evolucion</option>
-             
+              <option value="2">Evolucion</option> 
             </select>
-            <div id="Filter"> 
-
-            </div>
-            -->
-            <select class="type-filter" id="filter-pokemon">
-                           
-            </select>
-            
-           <div  class="list-pokemon" id="list-pokemon"></div>
+            <div id="Filter"></div>            
+            <div  class="list-pokemon" id="list-pokemon"></div>
           </div>
         </div>
       </div>
@@ -87,7 +74,7 @@
       <div class="container ">
         <div class="row">
           <!--Section de Instrucciones -->
-          <aside class="col-xs-12 instructions style-content" id="instructions">
+          <aside class="col-xs-12 col-sm-4  style-content instructions" id="instructions">
             <h1>Instrucciones para calcular Evolucion</h1>
             <div class="list-instructions">
               <ol>
@@ -95,32 +82,31 @@
                 <li>Ingresa cuantos caramelos tienes hasta el momento.</li>
                 <li>Haga click en "Descubrir"</li>
                 <li>Presione el boton de "Otra Vez" para hacer un nuevo calculo</li>
-              </ol>          
+              </ol>        
             </div>
+                      
           </aside>
           <!--Section Calcular Evolucion -->
-          <div class="col-xs-12  style-content evolution">
+          <div class="col-xs-12 col-sm-8 style-content evolution">
             <!--Section Formalario-->
-            <article  class="calculate-evolution style-content" id="calculate-evolution">
+            <article  id="calculate-evolution">
               <h1>Descubre cuanto le falta a tu pokemon para evolcionar</h1> 
-              <form class="style-content"  id="form" >
+              <form id="form" >
                 <div class="form-group">
                   <label for="name-pokemon">Nombre de tu pokemon :</label>
                   <input class="form-control" id="name-pokemon" type="text" placeholder="Nombre pokemon" required="required" />
                 </div>
                 <div class="form-group">
                   <label for="candy_count">Numero de caramelos :</label>
-                  <input class="form-control" id="candy_count" type="number" placeholder="Nombre pokemon" required="required" />
+                  <input class="form-control" id="candy_count" type="number" placeholder="Numero de Caramelos "  min="0" required="required" />
                 </div>
                 <div class="form-group">
-                  <button id="btn-calculate" class="btn">Descubrir</button>
+                  <button id="btn-calculate" type="submit" class="btn">Descubrir</button>
                 </div>                  
               </form>
             </article>
             <!--Section Resulatdo-->          
-            <article  class="evolution-result style-content"  id="evolution-result"> 
-              hola
-            </article>             
+            <article  id="evolution-result"></article>             
           </div>
         </div>
       </div>
