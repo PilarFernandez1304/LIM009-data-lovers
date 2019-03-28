@@ -1,70 +1,82 @@
 @import url('https://fonts.googleapis.com/css?family=Margarine');
 @import url(main.css);
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;  
-    font-family: 'Margarine', cursive;
- }
- .img-responsive {
-    max-width: 100%;
-    height: auto;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;  
+  font-family: 'Margarine', cursive;
 }
 .container {
-    width: 90%;
-    margin: auto;
-    text-align: center;
-    padding: 1rem;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
 }
 .row:before, .row:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 .row:after {
-    clear: both;
+  clear: both;
 } 
 section{
-    margin-top:100px;
+  margin-top:100px;
 }
 /* ocultar paginas */
 #page-pokedex , #page-evolution , #page-news , #evolution-result {
-    display: none;
+  display: none;
 }
-
+[class*= "col"] {
+  float: left;    
+}
 /******* Mobile First ******/
 .col-xs-12 { 
-    width: 100%;
+  width: 100%;
+}
+aside, .evolution{
+  height: auto;
 }
 
-
-
-
+/******** Tablet ******/
+@media (min-width: 768px) {
+  aside, .evolution{
+    height: 500px;
+  }
+  .col-sm-4{
+    width: 30%;
+  }
+  .col-sm-8{
+    width: 66%;       
+  }
+}
+/* ------------------ ESTILOS GENERALES -------------- */
+h1{
+  color: crimson;
+}
 /* ------------------ ESTILOS GENERALES - PAGE EVOLUTION ------------- */
 .style-content{
-    padding: 1rem;
-    margin: 1rem;
+  padding: 2rem;
+  margin :1%;
+  border : 1px solid #2B4D86;  
 }
-.evolution , .instructions {   
-    border : 1px solid #2B4D86
-}
-
 /****** Instruciones *****/
 .instructions .list-instructions {
-    text-align: justify;
-    padding :1rem 4rem;
+  text-align: justify;
+  margin-top:1rem;   
 }
-
 /****** Formulario *****/
 form{
-    border-radius: 4px;	
-    border: 1px solid  #E3A90B;
-    background-color: #f2f2f2
+  margin-top:1rem;
+  border-radius: 4px;	
+  border: 1px solid  #E3A90B;
+  background-color: #f2f2f2;
+  padding: 1rem;    
 }
 .form-group{
-    padding: 1rem;
+  padding: 1rem;
 }
 input{
-  width: 100%;
+width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -72,7 +84,6 @@ input{
   text-align: center;
   margin-top: 1rem;
 }
-
 button{
   background-color: #4CAF50;
   color: white;
@@ -82,48 +93,37 @@ button{
   cursor: pointer; 
   font-family: 'Concert One', cursive; 
 }
-
-/***** estilos para cada pokemon ***/
+/* ------------------ ESTILOS GENERALES - PAGE POKEDEX ------------- */
 .list-pokemon{
-    margin: 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;    
+  margin: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;    
 }
 .card-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
 
-    border-radius: 25px;
-    background: rgba(183,222,237,1);
-    font-family: 'Margarine', cursive;
-    border:1px solid #2B4D86;
-    color:#2B4D86;
+  border-radius: 25px;
+  background: rgba(183,222,237,1);
+  font-family: 'Margarine', cursive;
+  border:1px solid #2B4D86;
+  color:#2B4D86;
 }
-
 .card-item img{
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
-
-
 .card-item h1{
-    color: #E3A90B;
+  color: #E3A90B;
 }
-
-h1{
-    color: crimson;
-}
-
-
-.grow:hover
-{
--webkit-transform: scale(1.1);
--ms-transform: scale(1.1);
-transform: scale(1.1);
+.grow:hover{
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
