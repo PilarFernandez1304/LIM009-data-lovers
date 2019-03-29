@@ -15,4 +15,10 @@ describe('pokemon', () => {
 
  });
 
+ describe("NivelEvolution" , ()=>{
+  test('NivelEvolution deberia ser una funcion', () => {
+    expect(typeof pokemon.NivelEvolution).toBe('function');
+  });
+
+});
 })

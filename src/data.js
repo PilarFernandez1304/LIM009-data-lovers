@@ -115,24 +115,7 @@ const computeStats = (dataPoke,pokemon,candyInput) =>{
     pokemonEvolution = pokemonFind
     calculoEvolution = 0;
   }
-/*
-  switch (numberEvolutions){  
-    case 2: // No ha tenido NINGUNA evolucion
-    case 1:  // Ya ha tenido 1 EVOLUCION              
-      if( candyInput < pokemonFind.candy_count ){
-          pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );
-          calculoEvolution = pokemonFind.candy_count - parseInt(candyInput);
-      }
-      else{
-          pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.next_evolution[0].name );        
-          calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(candyInput));
-      }          
-    break;
-    case 0:  //Tiene todas la evoluciones 
-      pokemonEvolution = dataCalculatePokemon.find( poke => poke.name === pokemonFind.name )
-      calculoEvolution = 0;
-    break;
-  }*/
+
     arrResult.push({
     pokemonFirstName : pokemonFind.name, 
     pokemonFirstImg : pokemonFind.img,
