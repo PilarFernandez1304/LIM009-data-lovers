@@ -36,7 +36,6 @@ section{
 aside, .evolution{
   height: auto;
 }
-
 /******** Tablet ******/
 @media (min-width: 768px) {
   aside, .evolution{

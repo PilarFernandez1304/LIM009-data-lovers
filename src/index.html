@@ -49,12 +49,12 @@
               <option value="az"> A - Z </option> 
               <option value="za"> Z - A </option>
             </select>            
-            <select class="type-filter" id="FilterSelect">
-              <option value="0" >Filtrar Por</option>
+            <select class="type-filter" id="filterSelect">
+              <option selected disabled >Filtrar Por</option>
               <option value="1">Tipo</option>
               <option value="2">Evolucion</option> 
             </select>
-            <div id="Filter"></div>            
+            <div id="filterSpecific"></div>            
             <div  class="list-pokemon" id="list-pokemon"></div>
           </div>
         </div>
@@ -89,8 +89,8 @@
                   <input class="form-control" id="name-pokemon" type="text" placeholder="Nombre pokemon" required="required" />
                 </div>
                 <div class="form-group">
-                  <label for="candy_count">Numero de caramelos :</label>
-                  <input class="form-control" id="candy_count" type="number" placeholder="Numero de Caramelos "  min="0" required="required" />
+                  <label for="candy-count">Numero de caramelos :</label>
+                  <input class="form-control" id="candy-count" type="number" placeholder="Numero de Caramelos "  min="0" required="required" />
                 </div>
                 <div class="form-group">
                   <button id="btn-calculate" type="submit" class="btn">Descubrir</button>
