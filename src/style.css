@@ -71,6 +71,7 @@ section{
 }
 aside, .evolution{
   height: auto;
+<<<<<<< HEAD
 }
 
 /******** Tablet ******/
@@ -89,6 +90,25 @@ aside, .evolution{
 h1{
   color: crimson;
 }
+=======
+}
+/******** Tablet ******/
+@media (min-width: 768px) {
+  aside, .evolution{
+    height: 500px;
+  }
+  .col-sm-4{
+    width: 30%;
+  }
+  .col-sm-8{
+    width: 66%;       
+  }
+}
+/* ------------------ ESTILOS GENERALES -------------- */
+h1{
+  color: crimson;
+}
+>>>>>>> 13aeaa5f570d74e2eeedd2252a6e34dc696c94c4
 /* ------------------ ESTILOS GENERALES - PAGE EVOLUTION ------------- */
 .style-content{
   padding: 2rem;
