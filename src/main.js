@@ -30,6 +30,45 @@ main.addEventListener('click', (e) => {
     pageHome.style.display = 'block';
   }
 });
+
+/****ANIMACION SLIDER */
+let btnleft=document.getElementById('right');
+let btnright=document.getElementById('left');
+
+let conteinerSlider=document.getElementById('conteinerSlider')
+let contador=-100;
+let limite=contador*2;
+btnleft.addEventListener('click',()=>{
+  let di=setInterval(()=>{
+        contador--;
+        conteinerSlider.style.marginLeft=`${contador}%`;
+        if (contador<= limite) {
+          clearInterval(di)
+          let son=conteinerSlider.children[0];
+          let clon=son.cloneNode(true);
+          conteinerSlider.removeChild(son)
+          conteinerSlider.appendChild(clon)
+          contador=-100
+          conteinerSlider.style.marginLeft=`${contador}%`;
+        }
+  },5)
+})
+btnright.addEventListener('click',()=>{
+  let di=setInterval(()=>{
+        contador++;
+        conteinerSlider.style.marginLeft=`${contador}%`;
+        if (contador>= 0) {
+          clearInterval(di)
+          let son=conteinerSlider.children[2];
+          let clon=son.cloneNode(true);
+          conteinerSlider.removeChild(son)
+          conteinerSlider.insertBefore(clon,conteinerSlider.children[0])
+          contador=-100
+          conteinerSlider.style.marginLeft=`${contador}%`;
+        }
+  },5)
+})
+
 /* *** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
 const dataPokedex = pokemon.mostrarListaPokemon(data);

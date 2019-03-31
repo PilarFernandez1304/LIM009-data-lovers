@@ -19,7 +19,7 @@ const sortData = (data, sortBy, sortOrder) => {
   case 'descendente':
     if (sortBy === 'za') {
       listaOrdenada = data.sort((eleA, eleB) => eleB.name > eleA.name ? 1 : -1);
-    }    
+    }
     break;
   }
   return listaOrdenada;
@@ -101,15 +101,15 @@ const dataListPokemon = (dataPoke) => {
 const computeStats = (dataPoke, pokemon, candyInput) => {
   const dataCalculatePokemon = dataListPokemon(dataPoke);
   // buscando al pokemon
-  const pokemonFind = dataCalculatePokemon.find(poke => poke.name === pokemon);
+  let pokemonFind = dataCalculatePokemon.find(poke => poke.name === pokemon);
   // saber el numero de evoluciones 
-  const numberEvolutions = pokemonFind.numEvolutions;   
+  const numberEvolutions = pokemonFind.numEvolutions;
   // almacenar los datos de resultados
-  let arrResult = [];                                      
+  let arrResult = [];
   // Evolucion de Pokemon
-  let pokemonEvolution;                                 
+  let pokemonEvolution;
   // Hallar dulces que falta
-  let calculoEvolution;                
+  let calculoEvolution;
   if (numberEvolutions > 0) {
     pokemonEvolution = dataCalculatePokemon.find(poke => poke.name === pokemonFind.nextEvolution[0].name);
     calculoEvolution = Math.abs(pokemonFind.candyCount - parseInt(candyInput));

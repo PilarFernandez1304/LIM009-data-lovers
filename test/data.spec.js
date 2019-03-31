@@ -3,6 +3,15 @@ global.window = global;
 require('../src/data');
 // require('./data.spec.js');
 
+
+
+//  describe("NivelEvolution" , ()=>{
+//   test('NivelEvolution deberia ser una funcion', () => {
+//     expect(typeof pokemon.NivelEvolution).toBe('function');
+//   });
+
+// });
+
 const data = [
   { id: 1, num: '001', name: 'Bulbasaur', img: 'http://www.serebii.net/pokemongo/pokemon/001.png', avgSpawns: 69, egg: '2 km', type: ['Grass', 'Poison'] },
   { id: 79, num: '079', name: 'Slowpoke', img: 'http://www.serebii.net/pokemongo/pokemon/079.png', avgSpawns: 105, egg: '5 km', type: ['Water', 'Psychic'] },
@@ -92,3 +101,4 @@ describe('pokemon', () => {
     });
   });
 });
+
