@@ -1,7 +1,7 @@
 /* *** MOSTRAR POEKOM ****/
 const mostrarListaPokemon = (dataPoke) => {
   const pokedex = dataPoke.map(data => {
-    return { num: data.num, img: data.img, name: data.name, avgSpawns: data.avg_spawns };
+    return { num: data.num, img: data.img, name: data.name, avg_spawns: data.avg_spawns };
   });
   return pokedex;
 };
@@ -11,7 +11,7 @@ const sortData = (data, sortBy, sortOrder) => {
   switch (sortOrder) {
   case 'ascendente':
     if (sortBy === 'avg_spawns') {
-      listaOrdenada = data.sort((eleA, eleB) => eleA.avgSpawns - eleB.avgSpawns);
+      listaOrdenada = data.sort((eleA, eleB) => eleA.avg_spawns - eleB.avg_spawns);
     } else {
       listaOrdenada = data.sort((eleA, eleB) => eleA.name > eleB.name ? 1 : -1);
     }
@@ -88,22 +88,22 @@ const dataListPokemon = (dataPoke) => {
     dataCalculate.push({
       num: dataPoke[i].num,
       name: dataPoke[i].name,
-      candyCount: dataPoke[i].candy_count,
-      nextEvolution: dataPoke[i].next_evolution,
-      numEvolutions: propiedad,
-      img: dataPoke[i].img
+      img: dataPoke[i].img,
+      candy_count: dataPoke[i].candy_count,
+      next_evolution: dataPoke[i].next_evolution,
+      num_evolutions: propiedad,     
     });
   }
   return dataCalculate;
 };
 // console.log(dataListPokemon(data));
 // 2. funcion de calculo de evolucion
-const computeStats = (dataPoke, pokemon, candyInput) => {
+const computeStats = (dataPoke, pokemon, candy_input) => {
   const dataCalculatePokemon = dataListPokemon(dataPoke);
   // buscando al pokemon
   let pokemonFind = dataCalculatePokemon.find(poke => poke.name === pokemon);
   // saber el numero de evoluciones 
-  const numberEvolutions = pokemonFind.numEvolutions;
+  const numberEvolutions = pokemonFind.num_evolutions;
   // almacenar los datos de resultados
   let arrResult = [];
   // Evolucion de Pokemon
@@ -111,17 +111,17 @@ const computeStats = (dataPoke, pokemon, candyInput) => {
   // Hallar dulces que falta
   let calculoEvolution;
   if (numberEvolutions > 0) {
-    pokemonEvolution = dataCalculatePokemon.find(poke => poke.name === pokemonFind.nextEvolution[0].name);
-    calculoEvolution = Math.abs(pokemonFind.candyCount - parseInt(candyInput));
+    pokemonEvolution = dataCalculatePokemon.find(poke => poke.name === pokemonFind.next_evolution[0].name);
+    calculoEvolution = Math.abs(pokemonFind.candy_count - parseInt(candy_input));
   } else {
-    pokemonEvolution = pokemonFind;
+    pokemonEvolution = pokemonFind;  
     calculoEvolution = 0;
   }
   arrResult.push({
     pokemonFirstName: pokemonFind.name,
     pokemonFirstImg: pokemonFind.img,
-    pokemonFirstCandy: pokemonFind.candyCount,
-    pokemonFirstInput: candyInput,
+    pokemonFirstCandy: pokemonFind.candy_count,
+    pokemonFirstCandyInput: candy_input,
     pokemonEvolutionName: pokemonEvolution.name,
     pokemonEvolutionImg: pokemonEvolution.img,
     candyEvolution: calculoEvolution

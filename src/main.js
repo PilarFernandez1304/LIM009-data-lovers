@@ -31,43 +31,43 @@ main.addEventListener('click', (e) => {
   }
 });
 
-/****ANIMACION SLIDER */
-let btnleft=document.getElementById('right');
-let btnright=document.getElementById('left');
+/* ***ANIMACION SLIDER */
+let btnleft = document.getElementById('right');
+let btnright = document.getElementById('left');
 
-let conteinerSlider=document.getElementById('conteinerSlider')
-let contador=-100;
-let limite=contador*2;
-btnleft.addEventListener('click',()=>{
-  let di=setInterval(()=>{
-        contador--;
-        conteinerSlider.style.marginLeft=`${contador}%`;
-        if (contador<= limite) {
-          clearInterval(di)
-          let son=conteinerSlider.children[0];
-          let clon=son.cloneNode(true);
-          conteinerSlider.removeChild(son)
-          conteinerSlider.appendChild(clon)
-          contador=-100
-          conteinerSlider.style.marginLeft=`${contador}%`;
-        }
-  },5)
-})
-btnright.addEventListener('click',()=>{
-  let di=setInterval(()=>{
-        contador++;
-        conteinerSlider.style.marginLeft=`${contador}%`;
-        if (contador>= 0) {
-          clearInterval(di)
-          let son=conteinerSlider.children[2];
-          let clon=son.cloneNode(true);
-          conteinerSlider.removeChild(son)
-          conteinerSlider.insertBefore(clon,conteinerSlider.children[0])
-          contador=-100
-          conteinerSlider.style.marginLeft=`${contador}%`;
-        }
-  },5)
-})
+let conteinerSlider = document.getElementById('conteinerSlider');
+let contador = -100;
+let limite = contador * 2;
+btnleft.addEventListener('click', () => {
+  let di = setInterval(() => {
+    contador--;
+    conteinerSlider.style.marginLeft = `${contador}%`;
+    if (contador <= limite) {
+      clearInterval(di);
+      let son = conteinerSlider.children[0];
+      let clon = son.cloneNode(true);
+      conteinerSlider.removeChild(son);
+      conteinerSlider.appendChild(clon);
+      contador = -100;
+      conteinerSlider.style.marginLeft = `${contador}%`;
+    }
+  }, 5);
+});
+btnright.addEventListener('click', () => {
+  let di = setInterval(() => {
+    contador++;
+    conteinerSlider.style.marginLeft = `${contador}%`;
+    if (contador >= 0) {
+      clearInterval(di);
+      let son = conteinerSlider.children[2];
+      let clon = son.cloneNode(true);
+      conteinerSlider.removeChild(son);
+      conteinerSlider.insertBefore(clon, conteinerSlider.children[0]);
+      contador = -100;
+      conteinerSlider.style.marginLeft = `${contador}%`;
+    }
+  }, 5);
+});
 
 /* *** 2.FUNCIONES ***/
 const data = POKEMON.pokemon;
@@ -114,7 +114,7 @@ filterSelect.addEventListener('change', () => {
   if (typeSelect === '1') {
     for (let i = 0; i < subOptionsOne.length; i++) {
       types += `<option value="${subOptionsOne[i]}">${subOptionsOne[i]}</option>`;
-    }    
+    }
   } else if (typeSelect === '2') {
     for (let i = 0; i < subOptionsSecond.length; i++) {
       types += `<option value="${subOptionsSecond[i]}">${subOptionsSecond[i]}</option>`;
@@ -195,14 +195,14 @@ btnCalculate.addEventListener('click', (e) => {
           <h1>Tu pokemon ya tuvo todas sus evoluciones :</h1>
           <p>${data[i].pokemonFirstName}</p>
           <img class="img-res" src='${data[i].pokemonFirstImg}'>
-          <p> Te sobra ${data[i].pokemonFirstInput}</p>`;
+          <p> Te sobra ${data[i].pokemonFirstCandyInput}</p>`;
       } else {
         if (data[i].pokemonFirstInput < data[i].pokemonFirstCandy) {
           respuesta = `
             <h1>Tu pokemon  es :</h1>
             <p>${data[i].pokemonFirstName}</p>
             <img class="img-res" src='${data[i].pokemonFirstImg}'>
-            <h1> Tienes  ${data[i].pokemonFirstInput} dulces, te faltan  ${data[i].candyEvolution} para evolucionar a :</h1>                
+            <h1> Tienes  ${data[i].pokemonFirstCandyInput} dulces, te faltan  ${data[i].candyEvolution} para evolucionar a :</h1>                
             <p>${data[i].pokemonEvolutionName}</p>
             <img class="img-res" src='${data[i].pokemonEvolutionImg}'>`;
         } else {
@@ -213,7 +213,7 @@ btnCalculate.addEventListener('click', (e) => {
           <h1>Este ya debio evolucionar a:</h1>                                    
           <p>${data[i].pokemonEvolutionName}</p>
           <img class="img-res" src='${data[i].pokemonEvolutionImg}'>
-          <h1>Tienes ${data[i].pokemonFirstInput} dulces , te sobran  ${data[i].candyEvolution} para la siguiente evolcion</h1>
+          <h1>Tienes ${data[i].pokemonFirstCandyInput} dulces , te sobran  ${data[i].candyEvolution} para la siguiente evolcion</h1>
           `;
         }
       }
