@@ -17,9 +17,7 @@ const sortData = (data, sortBy, sortOrder) => {
     }
     break;
   case 'descendente':
-    if (sortBy === 'za') {
       listaOrdenada = data.sort((eleA, eleB) => eleB.name > eleA.name ? 1 : -1);
-    }
     break;
   }
   return listaOrdenada;
