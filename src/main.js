@@ -197,7 +197,7 @@ btnCalculate.addEventListener('click', (e) => {
           <img class="img-res" src='${data[i].pokemonFirstImg}'>
           <p> Te sobra ${data[i].pokemonFirstCandyInput}</p>`;
       } else {
-        if (data[i].pokemonFirstInput < data[i].pokemonFirstCandy) {
+        if (data[i].pokemonFirstCandyInput < data[i].pokemonFirstCandy) {
           respuesta = `
             <h1>Tu pokemon  es :</h1>
             <p>${data[i].pokemonFirstName}</p>

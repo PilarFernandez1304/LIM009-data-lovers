@@ -7,7 +7,8 @@ Es una herramienta de ayuda para todos los usuarios de Pokémon Go, ya que te pe
 
 ![PokemonGo](src/img/Slider3.jpg)
 
-##Definición del Producto
+## Definición del Producto
+
 **¿Quiénes son los principales usuarios de producto?**
 Los principales usuarios son los jugadores tanto nuevos como antiguos de Pokémon Go.
 
@@ -29,11 +30,11 @@ Ordenar Data: Usuarios desean que se les permita ordenar la data de manera alfab
 Calcular Data:Los jugadores de Pokémon GO indicaron que les ayudaría en sus decisiones tener el calculo de cuantos duceles le falta a un pokemon para su evolucion
 
 ##Encuestas 
-![pregunta1](src/img/progunta1.png)
-![pregunta1](src/img/progunta2.png)
-![pregunta1](src/img/progunta3.png)
-![pregunta1](src/img/progunta4.png)
-![pregunta1](src/img/progunta5.png)
+![pregunta1](src/img/progunta1.jpg)
+![pregunta1](src/img/progunta2.jpg)
+![pregunta1](src/img/progunta3.jpg)
+![pregunta1](src/img/progunta4.jpg)
+![pregunta1](src/img/progunta5.jpg)
 
 ## Diseño de la Interfaz de Usuario
 En funcion a las necesidades nuestros usuario indicaron en la encusta se desarrollo un prototipo de baja fidelidad y un prototipo de alta fidelidad.
@@ -41,11 +42,11 @@ En funcion a las necesidades nuestros usuario indicaron en la encusta se desarro
 ### Prototipo de baja fidelidad
 Se realizó siguiendo como pauta las historias de usuario que resultaron de las encuestas a los jugadores de Pokemón GO .
 ####Sketch1
-![Sketch1](src/img/sketch1.png)
+![Sketch1](src/img/sketch1.jpg)
 ####Sketch2
-![Sketch2](src/img/sketch2.png)
+![Sketch2](src/img/sketch2.jpg)
 ####Sketch3
-![Sketch3](src/img/sketch3.png)
+![Sketch3](src/img/sketch3.jpg)
 
 ### Prototipo de alta fidelidad
 para el prototipo de alta fidelidad desidimos usar Adobe XD que es una herramienta que nos parecio mas amigable y nos permitio exportar el diseño a Zeplin
