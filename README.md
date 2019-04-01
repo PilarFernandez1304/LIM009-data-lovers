@@ -1,8 +1,8 @@
 # POKEMON 
-#Introducción
+## Introducción
 Pokemon Go es un videojuego de aventura de realidad aumentada, creado por Niantic, Inc. para dispositivos iOS y Android.Desde el día de su lanzamiento a causado furor entre los jóvenes y adultos.De acuerdo con el concepto original, los entrenadores buscan capturar Pokémon hasta completar una colección. El otro objetivo es adiestrarlos para que ganen batallas frente a otras criaturas. El juego ha conseguido superar los 65 millones de usuarios al día y ha generado aglomeraciones en las ciudades. Pero, ¿por qué este juego ha causado tanto impacto en los usuarios? La idea de llegar a convertirse en un maestro Pokémon es un feeling con el que ha crecido toda una generación, Pokémon Go te permite vivir la experiencia de un verdadero entrenador pokémon.
 
-# Pokemon - Data Lovers 
+## Pokemon - Data Lovers 
 Es una herramienta de ayuda para todos los usuarios de Pokémon Go, ya que te permite hacer, desde una búsqueda específica de un Pokémon, filtrarlos por tipo y evolución. Hacer un cálculo real de caramelos que le falta a tu Pokémon para llegar a la siguiente evolución.
 
 ![PokemonGo](src/img/Slider3.jpg)

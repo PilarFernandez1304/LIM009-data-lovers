@@ -10,6 +10,8 @@ const pageEvolution = document.getElementById('page-evolution');
 // FORMULARIO RESULT
 const calculateEvolution = document.getElementById('calculate-evolution');
 const evolutionResult = document.getElementById('evolution-result');
+const themeTitle = document.getElementById('theme-title');
+const listPokemon = document.getElementById('list-pokemon');
 
 main.addEventListener('click', (e) => {
   pageHome.style.display = 'none';
@@ -102,7 +104,8 @@ orderPokemon.addEventListener('change', () => {
     break;
   }
   const pokedexOrdenado = pokemon.sortData(dataPokedex, selectOrder, sortOrder);
-  document.getElementById('list-pokemon').innerHTML = crearPlantilla(pokedexOrdenado);
+  themeTitle.innerHTML = `Pokedex esta ordenado por ${selectOrder} `;
+  listPokemon.innerHTML = crearPlantilla(pokedexOrdenado);
 });
 // FILTRAR POKEMON
 const filterSelect = document.getElementById('filterSelect');
@@ -125,6 +128,7 @@ filterSelect.addEventListener('change', () => {
   const filter = document.getElementById('filter');
   filter.addEventListener('change', () => {
     let condition = filter.value; // value
+    themeTitle.innerHTML = `Lista de los Pokemon de tipo  ${condition}`;
     if (condition === 'Evolucion1' || condition === 'Evolucion2' || condition === 'Evolucion3') {
       const filterEvolucion = pokemon.nivelEvolution(data, condition);
       document.getElementById('list-pokemon').innerHTML = crearPlantilla(filterEvolucion);
@@ -134,45 +138,6 @@ filterSelect.addEventListener('change', () => {
     }
   });
 });
-
-
-/*
-let array;
-function selectFilter() {
-  const typeSelect = filterSelect.value;
-  if (typeSelect === '1') {
-    array = pokemon.listType(data);
-  } else if (typeSelect === '2') {
-    array = ['Evolucion1', 'Evolucion2', 'Evolucion3'];
-  } else {
-    array = [];
-  }
-  let string = '';
-  for (let i = 0; i < array.length; i++) {
-    let eleccion = array[i];
-    string = string + '<option values="' + eleccion + '">' + eleccion + '</option>';
-  }
-  string = '<select id="filter">' + string + '</select>';
-  // agregando el string al html
-  document.getElementById('filterSpecific').innerHTML = string;
-  const filterSpecific = document.getElementById('filterSpecific'); // seleccion de la condicion a filtrar 
-
-  filterSpecific.addEventListener('change', () => {
-    let condition = filterSpecific.value; // value
-    if (condition === 'Evolucion1' || condition === 'Evolucion2' || condition === 'Evolucion3') {
-      const filterEvolucion = pokemon.NivelEvolution(data, condition);
-      document.getElementById('list-pokemon').innerHTML = crearPlantilla(filterEvolucion);
-    } else {
-      const pokedexFiltrado = pokemon.filterData(data, condition);
-      document.getElementById('list-pokemon').innerHTML = crearPlantilla(pokedexFiltrado);
-    }
-  });
-}
-
-console.log(pokemon.computeStats(data,'Venusaur',23));
-console.log(pokemon.computeStats(data,'Ivysaur',23));
-console.log(pokemon.computeStats(data,'Bulbasaur',27));
-*/
 
 // CALCULAR DATOS DE EVOLUCION
 
