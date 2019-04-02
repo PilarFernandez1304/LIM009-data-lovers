@@ -79,8 +79,8 @@ const crearPlantilla = (data) => {
   let listaMostrada = [];
   data.forEach((data) => {
     let card = `
-        <div class="card-item grow">
-        <h1>N° ${data.num}</h1>
+        <div class="card-item grow flex-center">
+        <h2>N° ${data.num}</h2>
         <img class="img-res" src='${data.img}'>
         <p>${data.name}</p></div>`;
     listaMostrada += card;
