@@ -40,9 +40,21 @@ footer {
 [class*= "col"] {
   float: left;    
 }
+.pokedex-unit{
+  height: 80vh;
+  
+}
+.flex-unit{
+  margin: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
 /******* Mobile First ******/
 .col-xs-12 { 
   width: 100%;
+  
 }
 .col-xs-3{
   width: 100%;    

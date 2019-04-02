@@ -89,10 +89,11 @@ const crearPlantilla = (data) => {
   let listaMostrada = [];
   for (let i = 0 ; i < data.length ; i++) {
     let card = `
-        <div class="card-item grow flex-center">
-        <h2>N° ${data.num}</h2>
-        <img class="img-res" src='${data.img}'>
-        <p>${data.name}</p></div>`;
+        <div class="card-item grow flex-center" id="${data[i].num}">
+        <h2>N° ${data[i].num}</h2>
+        <img  id="${data[i].num}" src='${data[i].img}'>
+        <p>${data[i].name}</p></div>`;
+        
     listaMostrada += card;
   }
   return listaMostrada;
@@ -105,17 +106,17 @@ listPokemon.addEventListener('click', (e)=>{
   const unitPokemon = data.find(poke => poke.num === e.target.id);
   contentPokedex.style.display = 'none';
   let car = `
-  <div>
-    <p>${unitPokemon.num}</p>   
+  <div class="flex-unit">
+    <h2>${unitPokemon.num}</h2>   
     <img src="${unitPokemon.img}">
-    <h1>${unitPokemon.name}</h1>
-    <p> Altura : ${unitPokemon.height}</p>        
-    <p> Peso : ${unitPokemon.weight}</p>
-    <p> Huevo : ${unitPokemon.egg}</p>    
-    <p> Tipo :${unitPokemon.type}</p>
-    <p> Debilidades ${unitPokemon.weaknesses}</p>        
-    <p> Dulce : ${unitPokemon.candy}</p>
-    <p> Cantidad Dulces : ${unitPokemon.candyCount}</p>    
+    <h2>${unitPokemon.name}</h2>
+    <p><strong>Altura :</strong> ${unitPokemon.height}</p>        
+    <p><strong>Peso :</strong> ${unitPokemon.weight}</p>
+    <p><strong>Huevo :</strong> ${unitPokemon.egg}</p>    
+    <p><strong>Tipo :</strong>${unitPokemon.type}</p>
+    <p><strong>Debilidades :</strong>${unitPokemon.weaknesses}</p>        
+    <p><strong>Dulces :</trong>${unitPokemon.candy}</p>
+    <p><strong>Cantidad Dulces :</strong> ${unitPokemon.candyCount} </p>    
   </div>`;    
   datailPokemon.innerHTML = car;
   pokedexUnit.style.display = 'block';
