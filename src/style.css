@@ -75,7 +75,7 @@ h1,h2{
 .color-border{  
   border : 1px solid #2B4D86;  
 }
-.blue-color , label{
+.blue-color {
   color : #2B4D86;
   font-weight: bold;
 }
