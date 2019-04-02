@@ -24,7 +24,7 @@ section{
 footer {
   background:#2B4D86;
   color: #fff;
-  height: 62px; 
+  height: 60px; 
   bottom: 0px;
 } 
 
@@ -34,18 +34,21 @@ footer {
 
 }
 .page-evolution{
-  height: 83vh;
+  height: 82vh;
 }
 
 [class*= "col"] {
   float: left;    
 }
 .pokedex-unit{
-  height: 80vh;
+  height: 82vh;
   
 }
 .flex-unit{
-  margin: 5rem;
+  margin: 3rem 5rem;
+  padding:3rem; 
+  border: 1px solid #2B4D86;
+  background:rgba(183,222,237,1);
   display: flex;
   flex-direction: column;
   justify-content:center;
@@ -88,7 +91,7 @@ h1,h2{
 }
 .m1-p1{
   padding: 1rem;
-  margin : 5px ;
+  margin : 1% ;
 }
 .color-border{  
   border : 1px solid #2B4D86;  
@@ -98,8 +101,8 @@ h1,h2{
 #Slider{
   position: relative;
   width: 100%;
-  height: 80vh;
-  margin: 0 ;
+  height: 82vh;
+  margin:0 ;
   overflow: hidden;
 }
 .conteinerSlider{
@@ -109,11 +112,11 @@ h1,h2{
 }
 .conteinerImg{
   width: 33.4%;
- height: 81vh;   
+ height: 82vh;   
 }
 .conteinerSlider img{
   width: 100%;
-  height: 85vh;   
+  height: 90vh;   
 }
 section>img{
   width: 80px;
