@@ -7,11 +7,19 @@ const pagePokedex = document.getElementById('page-pokedex');
 const pageEvolution = document.getElementById('page-evolution');
 // const pageNews = document.getElementById("page-news");
 
+const themeTitle = document.getElementById('theme-title');
+const contentPokedex = document.getElementById('content-pokedex'); //  contenedor que tiene los botones + lista de pokemones  
+const listPokemon = document.getElementById('list-pokemon'); // contenedor para dibujar los pokemones
+
+const pokedexUnit = document.getElementById('pokedex-unit'); // contenedor que contiene detail pokemon
+const datailPokemon = document.getElementById('detail-pokemon'); // contenedor para dibujar detalle de un pokemon 
+const btnGetBack = document.getElementById('btn-getBack'); // regresar al lista e pokemon
+
 // FORMULARIO RESULT
 const calculateEvolution = document.getElementById('calculate-evolution');
 const evolutionResult = document.getElementById('evolution-result');
-const themeTitle = document.getElementById('theme-title');
-const listPokemon = document.getElementById('list-pokemon');
+const resultPokemon = document.getElementById('result-pokemon');
+const btnNew = document.getElementById('btn-new');
 
 main.addEventListener('click', (e) => {
   pageHome.style.display = 'none';
@@ -20,8 +28,10 @@ main.addEventListener('click', (e) => {
   // pageNews.style.display = 'none';
 
   if (e.target.id === 'pokedex') {
+    pokedexUnit.style.display = 'none';
     pagePokedex.style.display = 'block';
-    document.getElementById('list-pokemon').innerHTML = crearPlantilla(dataPokedex);
+    contentPokedex.style.display = 'block';
+    listPokemon.innerHTML = crearPlantilla(dataPokedex);
   } else if (e.target.id === 'evolution') {
     pageEvolution.style.display = 'block';
     // LIMPIAR FORMULARIO 
@@ -77,16 +87,44 @@ const dataPokedex = pokemon.mostrarListaPokemon(data);
 // MOSTRAR POKEMON 
 const crearPlantilla = (data) => {
   let listaMostrada = [];
-  data.forEach((data) => {
+  for (let i = 0 ; i < data.length ; i++) {
     let card = `
         <div class="card-item grow flex-center">
         <h2>N° ${data.num}</h2>
         <img class="img-res" src='${data.img}'>
         <p>${data.name}</p></div>`;
     listaMostrada += card;
-  });
+  }
   return listaMostrada;
 };
+
+/*  mostrar detalle de cada pokemon*/
+/* const onlyPokemon = (data) =>{
+}*/
+listPokemon.addEventListener('click', (e)=>{
+  const unitPokemon = data.find(poke => poke.num === e.target.id);
+  contentPokedex.style.display = 'none';
+  let car = `
+  <div>
+    <p>${unitPokemon.num}</p>   
+    <img src="${unitPokemon.img}">
+    <h1>${unitPokemon.name}</h1>
+    <p> Altura : ${unitPokemon.height}</p>        
+    <p> Peso : ${unitPokemon.weight}</p>
+    <p> Huevo : ${unitPokemon.egg}</p>    
+    <p> Tipo :${unitPokemon.type}</p>
+    <p> Debilidades ${unitPokemon.weaknesses}</p>        
+    <p> Dulce : ${unitPokemon.candy}</p>
+    <p> Cantidad Dulces : ${unitPokemon.candyCount}</p>    
+  </div>`;    
+  datailPokemon.innerHTML = car;
+  pokedexUnit.style.display = 'block';
+  btnGetBack.addEventListener('click', () =>{
+    contentPokedex.style.display = 'block';
+    pokedexUnit.style.display = 'none';
+  });
+});
+
 // ORDENAR POKEMON
 const orderPokemon = document.getElementById('order-pokemon');
 orderPokemon.addEventListener('change', () => {
@@ -107,6 +145,7 @@ orderPokemon.addEventListener('change', () => {
   themeTitle.innerHTML = `Pokedex esta ordenado por ${selectOrder} `;
   listPokemon.innerHTML = crearPlantilla(pokedexOrdenado);
 });
+
 // FILTRAR POKEMON
 const filterSelect = document.getElementById('filterSelect');
 filterSelect.addEventListener('change', () => {
@@ -127,13 +166,14 @@ filterSelect.addEventListener('change', () => {
   filterSpecific.innerHTML = `<select id="filter">${types}</select>`;
   const filter = document.getElementById('filter');
   filter.addEventListener('change', () => {
-    let condition = filter.value; // value
-    themeTitle.innerHTML = `Lista de los Pokemon de tipo  ${condition}`;
+    let condition = filter.value; // value    
     if (condition === 'Evolucion1' || condition === 'Evolucion2' || condition === 'Evolucion3') {
       const filterEvolucion = pokemon.nivelEvolution(data, condition);
+      themeTitle.innerHTML = `Lista de pokemon de  ${condition}`;
       document.getElementById('list-pokemon').innerHTML = crearPlantilla(filterEvolucion);
     } else {
       const pokedexFiltrado = pokemon.filterData(data, condition);
+      themeTitle.innerHTML = `Lista de pokemon de tipo  ${condition}`;
       document.getElementById('list-pokemon').innerHTML = crearPlantilla(pokedexFiltrado);
     }
   });
@@ -142,7 +182,7 @@ filterSelect.addEventListener('change', () => {
 // CALCULAR DATOS DE EVOLUCION
 
 const btnCalculate = document.getElementById('btn-calculate');
-btnCalculate.addEventListener('click', (e) => {
+btnCalculate.addEventListener('click', (e) => {  
   const validate = (string) => {
     string = string.toLowerCase();
     let stringValidate = string.charAt(0).toUpperCase() + string.slice(1);
@@ -187,7 +227,13 @@ btnCalculate.addEventListener('click', (e) => {
   };
   calculateEvolution.style.display = 'none';
   evolutionResult.style.display = 'block';
-  evolutionResult.innerHTML = plantillaResultado(resultado);
+  resultPokemon.innerHTML = plantillaResultado(resultado);
+
+  btnNew.addEventListener('click', () => {
+    limpiar();
+    calculateEvolution.style.display = 'block';
+    evolutionResult.style.display = 'none';
+  });  
 });
 const limpiar = () => {
   document.getElementById('form').reset();
