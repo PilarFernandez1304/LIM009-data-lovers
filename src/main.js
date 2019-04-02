@@ -8,12 +8,17 @@ const pageEvolution = document.getElementById('page-evolution');
 // const pageNews = document.getElementById("page-news");
 
 const themeTitle = document.getElementById('theme-title');
-const contentPokedex = document.getElementById('content-pokedex'); //  contenedor que tiene los botones + lista de pokemones  
-const listPokemon = document.getElementById('list-pokemon'); // contenedor para dibujar los pokemones
+ //  contenedor general de los botones + lista de pokemones 
+const contentPokedex = document.getElementById('content-pokedex'); 
+// contenedor para dibujar los pokemones
+const listPokemon = document.getElementById('list-pokemon'); 
 
-const pokedexUnit = document.getElementById('pokedex-unit'); // contenedor que contiene detail pokemon
-const datailPokemon = document.getElementById('detail-pokemon'); // contenedor para dibujar detalle de un pokemon 
-const btnGetBack = document.getElementById('btn-getBack'); // regresar al lista e pokemon
+// contenedor que contiene detail pokemon
+const pokedexUnit = document.getElementById('pokedex-unit');
+// contenedor para dibujar detalle de un pokemon 
+const datailPokemon = document.getElementById('detail-pokemon'); 
+// regresar la lista e pokemon
+const btnGetBack = document.getElementById('btn-getBack'); 
 
 // FORMULARIO RESULT
 const calculateEvolution = document.getElementById('calculate-evolution');
@@ -28,34 +33,34 @@ main.addEventListener('click', (e) => {
   // pageNews.style.display = 'none';
 
   if (e.target.id === 'pokedex') {
-    pokedexUnit.style.display = 'none';
-    pagePokedex.style.display = 'block';
-    contentPokedex.style.display = 'block';
-    listPokemon.innerHTML = crearPlantilla(dataPokedex);
+    pokedexUnit.style.display = 'none';// contenedor de pokemones a detalle
+    pagePokedex.style.display = 'block';//seccion pokedex 
+    contentPokedex.style.display = 'block';//contenedor de lista de pokemones
+    listPokemon.innerHTML = crearPlantilla(dataPokedex);// Nueva plantilla con eventos de filtrado y ordenado
   } else if (e.target.id === 'evolution') {
-    pageEvolution.style.display = 'block';
+    pageEvolution.style.display = 'block'; //seccion de evolucion
     // LIMPIAR FORMULARIO 
     calculateEvolution.style.display = 'block';
     evolutionResult.style.display = 'none';
     limpiar();
   } else if (e.target.id === 'home') {
-    pageHome.style.display = 'block';
+    pageHome.style.display = 'block';// seccion de inicio de pagina primera vista
   }
 });
 
 /* ***ANIMACION SLIDER */
-let btnleft = document.getElementById('right');
-let btnright = document.getElementById('left');
+let btnleft = document.getElementById('right');// seleccion de id botones html a js
+let btnright = document.getElementById('left');//seleccion de id botones html a js
 
 let conteinerSlider = document.getElementById('conteinerSlider');
 let contador = -100;
 let limite = contador * 2;
 btnleft.addEventListener('click', () => {
-  let di = setInterval(() => {
+  let id = setInterval(() => {
     contador--;
     conteinerSlider.style.marginLeft = `${contador}%`;
     if (contador <= limite) {
-      clearInterval(di);
+      clearInterval(id);
       let son = conteinerSlider.children[0];
       let clon = son.cloneNode(true);
       conteinerSlider.removeChild(son);

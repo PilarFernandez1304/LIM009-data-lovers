@@ -9,6 +9,7 @@
 .container {
   width: 100%;
   text-align: center;
+  padding:0 3rem;
 }
 .row:before, .row:after {
   content: " ";
@@ -91,7 +92,7 @@ h1,h2{
 }
 .m1-p1{
   padding: 1rem;
-  margin : 1% ;
+  margin :1% ;
 }
 .color-border{  
   border : 1px solid #2B4D86;  
@@ -161,7 +162,7 @@ section>img{
   align-items: center;
  }
 .list-pokemon{
-  margin: 2rem;  
+  margin: 0;  
   flex-wrap: wrap;   
 }
 .card-item {
