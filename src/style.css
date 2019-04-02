@@ -75,14 +75,17 @@ h1,h2{
 .color-border{  
   border : 1px solid #2B4D86;  
 }
+
 .blue-color {        
   color : #2B4D86;
   font-weight: bold;
 }
+/* estilos  de form */
 .evolution label{        
   color : #2B4D86;
   font-weight: bold;
 }
+
  
 /* ------------------ ESTILOS GENERALES - PAGE INICIO ------------- */
 #Slider{
