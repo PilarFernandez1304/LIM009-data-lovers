@@ -18,41 +18,21 @@
   clear: both;
 } 
 section{
-  margin-top:80px;
-  
+  margin-top:80px;  
 }
 footer {
   background:#2B4D86;
   color: #fff;
   height: 60px; 
-  bottom: 0px;
+  margin-bottom: 0px;
 } 
 
 /* ocultar paginas */
 #page-pokedex , #page-evolution , #page-news , #evolution-result {
   display: none;
-
 }
-.page-evolution{
-  height: 82vh;
-}
-
 [class*= "col"] {
   float: left;    
-}
-.pokedex-unit{
-  height: 82vh;
-  
-}
-.flex-unit{
-  margin: 3rem 5rem;
-  padding:3rem; 
-  border: 1px solid #2B4D86;
-  background:rgba(183,222,237,1);
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
 }
 /******* Mobile First ******/
 .col-xs-12 { 
@@ -81,8 +61,7 @@ aside, .evolution{
   }
   .col-xs-3{
     width: 30%;    
-  }
-  
+  } 
  
 }
 /* ------------------ ESTILOS GENERALES -------------- */
@@ -95,6 +74,10 @@ h1,h2{
 }
 .color-border{  
   border : 1px solid #2B4D86;  
+}
+.blue-color , label{
+  color : #2B4D86;
+  font-weight: bold;
 }
 
 /* ------------------ ESTILOS GENERALES - PAGE INICIO ------------- */
@@ -188,12 +171,30 @@ section>img{
   transform: scale(1.1);
 }
 
+/** detalle pokemon*/
+.page-evolution{
+  height: 82vh;
+}
+.pokedex-unit{
+  height: 82vh;  
+}
+.flex-unit{
+  margin: 3rem 5rem;
+  padding:3rem; 
+  border: 1px solid #2B4D86;
+  background:rgba(183,222,237,1);
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
+
+
 /* ------------------ ESTILOS GENERALES - PAGE EVOLUTION ------------- */
 /****** Instruciones *****/
-.instructions .list-instructions {
-
+.list-instructions {
   text-align: justify;
-  margin-top:1rem;   
+  margin: 2rem;   
 }
 /****** Formulario *****/
 form{
@@ -206,8 +207,9 @@ form{
 .form-group{
   padding: 1rem;
 }
+
 input{
-width: 100%;
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -216,7 +218,7 @@ width: 100%;
   margin-top: 1rem;
 }
 button{
-  background-color: #4CAF50;
+  background-color: #2B4D86;
   color: white;
   padding: 12px 20px;
   border: none;
