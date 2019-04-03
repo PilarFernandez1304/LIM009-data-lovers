@@ -30,11 +30,11 @@ Ordenar Data: Usuarios desean que se les permita ordenar la data de manera alfab
 Calcular Data:Los jugadores de Pokémon GO indicaron que les ayudaría en sus decisiones tener el calculo de cuantos duceles le falta a un pokemon para su evolucion
 
 ##Encuestas 
-![pregunta1](src/img/progunta1.jpg)
-![pregunta1](src/img/progunta2.jpg)
-![pregunta1](src/img/progunta3.jpg)
-![pregunta1](src/img/progunta4.jpg)
-![pregunta1](src/img/progunta5.jpg)
+![pregunta1](src/img/pregunta1.png)
+![pregunta2](src/img/pregunta2.png)
+![pregunta3](src/img/pregunta3.png)
+![pregunta4](src/img/pregunta4.png)
+![pregunta5](src/img/pregunta5.png)
 
 ## Diseño de la Interfaz de Usuario
 En funcion a las necesidades nuestros usuario indicaron en la encusta se desarrollo un prototipo de baja fidelidad y un prototipo de alta fidelidad.

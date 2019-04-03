@@ -121,7 +121,7 @@ listPokemon.addEventListener('click', (e)=>{
     <p><strong>Tipo :</strong>${unitPokemon.type}</p>
     <p><strong>Debilidades :</strong>${unitPokemon.weaknesses}</p>        
     <p><strong>Dulces :</trong>${unitPokemon.candy}</p>
-    <p><strong>Cantidad Dulces :</strong> ${unitPokemon.candyCount} </p>    
+    <p><strong>Cantidad Dulces :</strong> ${unitPokemon.candy_count} </p>    
   </div>`;    
   datailPokemon.innerHTML = car;
   pokedexUnit.style.display = 'block';
