@@ -8,7 +8,7 @@ const pageEvolution = document.getElementById('page-evolution');
 // const pageNews = document.getElementById("page-news");
 
 const themeTitle = document.getElementById('theme-title');
- //  contenedor general de los botones + lista de pokemones 
+// contenedor general de los botones + lista de pokemones 
 const contentPokedex = document.getElementById('content-pokedex'); 
 // contenedor para dibujar los pokemones
 const listPokemon = document.getElementById('list-pokemon'); 
@@ -33,12 +33,16 @@ main.addEventListener('click', (e) => {
   // pageNews.style.display = 'none';
 
   if (e.target.id === 'pokedex') {
-    pokedexUnit.style.display = 'none';// contenedor de pokemones a detalle
-    pagePokedex.style.display = 'block';//seccion pokedex 
-    contentPokedex.style.display = 'block';//contenedor de lista de pokemones
+    // contenedor de pokemones a detalle
+    pokedexUnit.style.display = 'none'; 
+    // seccion pokedex 
+    pagePokedex.style.display = 'block';
+    //  contenedor de lista de pokemones  
+    contentPokedex.style.display = 'block'; 
     listPokemon.innerHTML = crearPlantilla(dataPokedex);// Nueva plantilla con eventos de filtrado y ordenado
   } else if (e.target.id === 'evolution') {
-    pageEvolution.style.display = 'block'; //seccion de evolucion
+    //seccion de evolucion
+    pageEvolution.style.display = 'block'; 
     // LIMPIAR FORMULARIO 
     calculateEvolution.style.display = 'block';
     evolutionResult.style.display = 'none';
@@ -49,9 +53,8 @@ main.addEventListener('click', (e) => {
 });
 
 /* ***ANIMACION SLIDER */
-let btnleft = document.getElementById('right');// seleccion de id botones html a js
-let btnright = document.getElementById('left');//seleccion de id botones html a js
-
+let btnleft = document.getElementById('right');
+let btnright = document.getElementById('left');
 let conteinerSlider = document.getElementById('conteinerSlider');
 let contador = -100;
 let limite = contador * 2;
