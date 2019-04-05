@@ -41,7 +41,6 @@ main.addEventListener('click', (e) => {
     contentPokedex.style.display = 'block'; 
     listPokemon.innerHTML = crearPlantilla(dataPokedex);// Nueva plantilla con eventos de filtrado y ordenado
   } else if (e.target.id === 'evolution') {
-    //seccion de evolucion
     pageEvolution.style.display = 'block'; 
     // LIMPIAR FORMULARIO 
     calculateEvolution.style.display = 'block';
